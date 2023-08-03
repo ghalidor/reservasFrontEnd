@@ -67,21 +67,29 @@ export class LayoutclienteComponent implements OnInit {
     const fieldset = document.getElementById("field_" + posicion);
     const fieldsetAnterior = document.getElementById(fieldset.previousElementSibling.id);
     var step = false;
-
+    var message="";
     switch (fieldsetAnterior.id) {
       case 'field_personas':
         step = this.BcantP > 0 ? true : false;
+        message="Seleccione Cantidad de Personas";
         break;
       case 'field_calendar':
         this.Bfecha = moment(this.BfechaAny, "DD-MM-YYYY").format("YYYY-MM-DD");
         step = this.Bfecha != "" ? true : false;
+        message="Seleccione Fecha para la reservación";
         break;
       case 'field_hora':
         step = this.Bhora != "" ? true : false;
+        message="Seleccione Hora para la reservación";
         break;
       case 'field_zona':
         step = this.Bzona != "" ? true : false;
+        message="Seleccione Zona para la reservación";
         break;
+        case 'field_confirm':
+          message="Complete los campos obligatorios";
+          step = this.Bzona != "" ? true : false;
+          break;
     }
 
     console.log(this.Bfecha)
@@ -89,6 +97,9 @@ export class LayoutclienteComponent implements OnInit {
       box.classList.add("active");
       fieldset.style.display = 'block';
       fieldsetAnterior.style.display = 'none'; 
+    }
+    else{
+      this.toastr.warning(message);
     }
     console.log(fieldset.previousElementSibling.id);
   }
