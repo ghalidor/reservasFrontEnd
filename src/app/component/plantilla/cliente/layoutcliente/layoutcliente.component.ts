@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
+
 import { Zonas } from 'src/app/module/zonas';
 import { Mesas } from 'src/app/module/mesas';
+import { ZonasService } from 'src/app/service/zonas/zonas.service';
+import { MesasService } from 'src/app/service/mesas/mesas.service';
 
 @Component({
   selector: 'app-layoutcliente',
@@ -25,30 +29,67 @@ export class LayoutclienteComponent implements OnInit {
   bsInlineRangeValue: Date[];
   maxDate = new Date();
 
-  cantPersonas: number;
-  dfecha: string;
-  dhora: string;
-  dzona: string;
+  HcantP: number;
+  Hfecha: string;
+  Hhora: string;
+  Hzona: string;
+
+
+  BcantP: number;
+  Bfecha: string;
+  Bhora: string;
+  Bzona: string;
+
+  BfechaAny:any;
 
   listaZonas: Zonas[];
   listaMesas: Mesas[];
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService,
+    private SpinnerService: NgxSpinnerService,
+    private mesasService: MesasService,
+    private zonasServices: ZonasService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
 
   ngOnInit(): void {
     this.toastr.warning("Seleccione Empresa/Sede");
+    this.ListaZonas();
+    this.BcantP = 0;
+    this.Bfecha = "";
+    this.Bhora = "";
+    this.Bzona = "";
   }
 
   avanzar(posicion: string) {
     const box = document.getElementById(posicion);
-    box.classList.add("active");
     const fieldset = document.getElementById("field_" + posicion);
-    fieldset.style.display = 'block';
     const fieldsetAnterior = document.getElementById(fieldset.previousElementSibling.id);
-    fieldsetAnterior.style.display = 'none';
+    var step = false;
+
+    switch (fieldsetAnterior.id) {
+      case 'field_personas':
+        step = this.BcantP > 0 ? true : false;
+        break;
+      case 'field_calendar':
+        this.Bfecha = moment(this.BfechaAny, "DD-MM-YYYY").format("YYYY-MM-DD");
+        step = this.Bfecha != "" ? true : false;
+        break;
+      case 'field_hora':
+        step = this.Bhora != "" ? true : false;
+        break;
+      case 'field_zona':
+        step = this.Bzona != "" ? true : false;
+        break;
+    }
+
+    console.log(this.Bfecha)
+    if (step) {
+      box.classList.add("active");
+      fieldset.style.display = 'block';
+      fieldsetAnterior.style.display = 'none'; 
+    }
     console.log(fieldset.previousElementSibling.id);
   }
 
@@ -62,6 +103,47 @@ export class LayoutclienteComponent implements OnInit {
     const fieldsetAnterior = document.getElementById(fieldsetActual.previousElementSibling.id);
     fieldsetAnterior.style.display = 'block';
 
+  }
+
+  cantidadPersonas(cantidad: number) {
+    const caActual = document.getElementById("ca" + cantidad);
+    const padre = caActual.parentElement.parentElement;
+    const hijos = padre.querySelectorAll("a");
+    hijos.forEach(x => x.classList.remove("orange"));
+    caActual.classList.add("orange");
+    this.BcantP = cantidad;
+  }
+
+  ListaZonas() {
+    this.SpinnerService.show();
+
+    this.zonasServices.listaZonas().subscribe({
+      next: response => {
+        this.listaZonas = response.data;
+      },
+      complete: () => {
+
+      },
+      error: (error) => {
+        this.SpinnerService.hide();
+      }
+    })
+  }
+
+  ListaMesas() {
+    this.SpinnerService.show();
+
+    this.mesasService.listaMesas().subscribe({
+      next: response => {
+        this.listaMesas = response.data;
+      },
+      complete: () => {
+
+      },
+      error: (error) => {
+        this.SpinnerService.hide();
+      }
+    })
   }
 
 }

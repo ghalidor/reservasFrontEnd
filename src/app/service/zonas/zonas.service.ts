@@ -11,7 +11,7 @@ export class ZonasService {
   constructor(public httpclient: HttpClient) { }
 
   listaZonas(): Observable<any> {
-    const url = `${this.apiUrl}Mesas/ListaZonas`;
+    const url = `${this.apiUrl}Zonas/ListaZonas`;
     return this.httpclient.get(url);
   }
 }

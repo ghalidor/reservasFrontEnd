@@ -5700,7 +5700,16 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     #reservation .people .person {
         display: inline-block;
         padding: 10px 4px;
-        width: 14.1% !important;
+        width: 17% !important;
+        overflow: hidden;
+    }
+
+    #reservation .people .zonas {
+        display: inline-block;
+        padding: 10px 4px;
+        width: 30% !important;
+        overflow: hidden;
+        white-space: nowrap;
     }
 }
 
@@ -5732,7 +5741,7 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     border-radius: 50%;
     padding: 4px;
     font-size: 16px;
-    text-shadow: rgb(131 69 8) 1px 1px 1px;
+    text-shadow:rgb(59 84 137) 1px 1px 1px;
 }
 
 #reservation .bs-datepicker-body table td span:hover {
@@ -5808,5 +5817,35 @@ body::-webkit-scrollbar-track {
 #reservation .people .person {
     display: inline-block;
     padding: 10px 4px;
-    width: 29.1%;
+    width: 50% ;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#reservation .people .zonas a {
+    font-size: 18px;
+    line-height: 21px;
+    padding: 6px;
+    border: 1px solid #fff;
+    border-radius: 14px;
+    width: 100% !important;
+    height: 35px;
+    margin: 0 auto;
+}
+
+#reservation .people .zonas {
+    display: inline-block;
+    padding: 10px 4px;
+    width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#reservation .people .zonas a {
+    border-radius: 16px !important;
+}
+
+#reservation span.is-other-month {
+    color:#616161;
+    text-shadow: rgb(130 135 145) 1px 1px 1px !important;
 }
