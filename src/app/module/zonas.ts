@@ -1,4 +1,4 @@
-export class Zonas {
+export class zonas {
     ZonaId: number;
     Descripcion: String;
     SucursalId: number;

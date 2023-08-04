@@ -3,11 +3,14 @@ import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
 
-import { Zonas } from 'src/app/module/zonas';
-import { Mesas } from 'src/app/module/mesas';
+import { zonas } from 'src/app/module/zonas';
+import { mesas } from 'src/app/module/mesas';
 import { ZonasService } from 'src/app/service/zonas/zonas.service';
 import { MesasService } from 'src/app/service/mesas/mesas.service';
 
+import { ReservacionService } from 'src/app/service/reservacion/reservacion.service';
+import { ReservacionNuevo } from 'src/app/module/reservacion';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-layoutcliente',
   templateUrl: './layoutcliente.component.html',
@@ -17,6 +20,8 @@ export class LayoutclienteComponent implements OnInit {
   selectedCar: number;
   moment = moment;
   fechaini: Date;
+  mostrar: boolean;
+
   listaHoras: string[] = ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '01:00 PM', '02:00 PM'];
   cars = [
     { id: 1, name: 'Volvo' },
@@ -41,31 +46,41 @@ export class LayoutclienteComponent implements OnInit {
 
   BfechaAny: any;
 
-  nombres:string;
-  nrodocumento:string;
-  telefono:string;
-  mensaje:string;
-  
-  listaZonas: Zonas[];
-  listaMesas: Mesas[];
+  nombres: string;
+  nrodocumento: string;
+  telefono: string;
+  mensaje: string;
 
-  constructor(private toastr: ToastrService,
-    private SpinnerService: NgxSpinnerService,
+  listaZonas: zonas[];
+  listaMesas: mesas[];
+
+  reserva = new ReservacionNuevo;
+  constructor(
+    private reservacionService: ReservacionService,
+    private toastr: ToastrService,
+    private spinnerService: NgxSpinnerService,
     private mesasService: MesasService,
-    private zonasServices: ZonasService) {
+    private zonasServices: ZonasService,
+    private router: Router) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
 
   ngOnInit(): void {
-    this.toastr.warning("Seleccione Empresa/Sede");
+    //this.toastr.warning("Seleccione Empresa/Sede");
     this.ListaZonas();
+    this.mostrar = false;
     this.BcantP = 0;
     this.Bfecha = "";
     this.Bhora = "";
     this.Bzona = 0;
     this.bsInlineValue = null;
     this.BfechaAny = null;
+
+    this.nombres = "";
+    this.nrodocumento = "";
+    this.telefono = "";
+    this.mensaje = "";
   }
 
   avanzar(posicion: string) {
@@ -130,48 +145,93 @@ export class LayoutclienteComponent implements OnInit {
     hijos.forEach(x => x.classList.remove("orange"));
     caActual.classList.add("orange");
     this.BcantP = cantidad;
+    this.HcantP = cantidad;
   }
 
   onDateSelect(event) {
     this.BfechaAny = moment(event).format("DD-MM-YYYY");
-    this.Hfecha=this.BfechaAny;
+    this.Hfecha = this.BfechaAny;
     //console.log(event)
   }
 
-  horaReserva(hora:string,indice:number){
+  horaReserva(hora: string, indice: number) {
     var fecha = moment().format("YYYY-MM-DD");
-    this.Bhora = moment(fecha+" "+hora,"YYYY-MM-DD hh:mm a").format("HH:mm a");
+    this.Bhora = moment(fecha + " " + hora, "YYYY-MM-DD hh:mm a").format("HH:mm a");
     const hora_actual = document.getElementsByClassName("hora_" + indice);
-    this.Hhora=hora_actual[0].textContent;
+    this.Hhora = hora_actual[0].textContent;
     const padre = hora_actual[0].parentElement.parentElement;
     const hijos = padre.querySelectorAll("a");
     hijos.forEach(x => x.classList.remove("orange"));
     hora_actual[0].classList.add("orange");
-    console.log(this.Bhora)
+    //console.log(this.Bhora)
   }
 
-  zonaReserva(id:number,estado:boolean){
-    if(estado){
+  zonaReserva(id: number, estado: boolean) {
+    if (estado) {
       const zona_actual = document.getElementById("zona_" + id);
       const padre = zona_actual.parentElement.parentElement;
       const hijos = padre.querySelectorAll("a");
       hijos.forEach(x => x.classList.remove("orange"));
       zona_actual.classList.add("orange");
-      this.Bzona=id;
-      this.Hzona=zona_actual.textContent;
+      this.Bzona = id;
+      this.Hzona = zona_actual.textContent;
     }
-    else{
+    else {
       this.toastr.warning("Zona sin espacio para reservación");
     }
-    console.log(this.Hzona)
+    //console.log(this.Hzona)
   }
 
-  registrarReserva(){
-    
+  formulario(posicion: number) {
+    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" && this.mensaje != "") {
+      this.mostrar = true;
+    }
+    else {
+      this.mostrar = false;
+    }
+  }
+
+  registrarReserva() {
+    if (this.mostrar) {
+
+      this.reserva.Personas = this.BcantP;
+      this.reserva.Fecha = this.Bfecha;
+      this.reserva.Hora = this.Bhora;
+      this.reserva.ZonaId = this.Bzona;
+      this.reserva.Nrodocumento = this.nrodocumento;
+      this.reserva.Nombre = this.nombres;
+      this.reserva.Telefono = this.telefono;
+      this.reserva.Mensaje = this.mensaje;
+      this.reservacionService.CreateReservacion(this.reserva).subscribe({
+        next: response => {
+          if (response.respuesta) {
+            this.toastr.success(response.message);
+            //this.router.navigate(['inicio']);
+            setTimeout(() => {
+              document.location.reload();
+          }, 1000);
+            
+          }
+          else {
+            this.toastr.error(response.message);
+          }
+
+        },
+        complete: () => {
+
+        },
+        error: (error) => {
+          this.spinnerService.hide();
+        }
+      })
+    }
+    else {
+      this.toastr.warning("Complete los campos Obligatorios(*)");
+    }
   }
 
   ListaZonas() {
-    this.SpinnerService.show();
+    this.spinnerService.show();
 
     this.zonasServices.listaZonas().subscribe({
       next: response => {
@@ -181,13 +241,13 @@ export class LayoutclienteComponent implements OnInit {
 
       },
       error: (error) => {
-        this.SpinnerService.hide();
+        this.spinnerService.hide();
       }
     })
   }
 
   ListaMesas() {
-    this.SpinnerService.show();
+    this.spinnerService.show();
 
     this.mesasService.listaMesas().subscribe({
       next: response => {
@@ -197,7 +257,7 @@ export class LayoutclienteComponent implements OnInit {
 
       },
       error: (error) => {
-        this.SpinnerService.hide();
+        this.spinnerService.hide();
       }
     })
   }

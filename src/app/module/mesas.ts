@@ -1,4 +1,4 @@
-export class Mesas {
+export class mesas {
     MesaId: number;
     Descripcion: String;
     NumeroMesa: number;

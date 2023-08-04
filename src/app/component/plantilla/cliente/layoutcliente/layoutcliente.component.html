@@ -43,19 +43,19 @@
                                     <!-- progressbar -->
                                     <ul id="progressbar">
                                         <li class="active" id="personas"><strong>Personas</strong>
-                                            <div>{{HcantP}}</div>
+                                            <div class="text-success">{{HcantP}}</div>
                                         </li>
                                         <li id="calendar"><strong>Fecha</strong>
-                                            <div>{{Hfecha}}</div>
+                                            <div class="text-success">{{Hfecha}}</div>
                                         </li>
                                         <li id="hora"><strong>Hora</strong>
-                                            <div>{{Hhora}}</div>
+                                            <div class="text-success">{{Hhora}}</div>
                                         </li>
                                         <li id="zona"><strong>Zona</strong>
-                                            <div>{{Hzona}}</div>
+                                            <div class="text-success">{{Hzona}}</div>
                                         </li>
                                         <li id="confirm"><strong>Tus Datos</strong>
-                                            <div>{{HcantP}}</div>
+                                            <div ><i *ngIf="mostrar" style="color: green;" class="fa fa-check-circle"></i></div>
                                         </li>
                                     </ul>
                                     <!-- fieldsets -->
@@ -126,16 +126,16 @@
                                         <div class="row mb-4">
 
                                             <div class="col-md-6">
-                                                <input id="nombre" name="nombre" autocomplete="off" [(ngModel)]="nombres" class="form-control" placeholder="Nombre(s) y Apellido(s) (*)" type="text">
+                                                <input id="nombre" name="nombre" autocomplete="off" (keyup)="formulario(1)" [(ngModel)]="nombres" class="form-control" placeholder="Nombre(s) y Apellido(s) (*)" type="text">
                                             </div>
                                             <div class="col-md-3">
-                                                <input id="nrodocumento" name="nrodocumento" autocomplete="off" [(ngModel)]="nrodocumento" class="form-control" placeholder="Nro Documento (*)" type="text">
+                                                <input id="nrodocumento" name="nrodocumento" autocomplete="off" (keyup)="formulario(2)" [(ngModel)]="nrodocumento" class="form-control" placeholder="Nro Documento (*)" type="text">
                                             </div>
                                             <div class="col-md-3">
-                                                <input id="telefono" name="telefono" autocomplete="off" [(ngModel)]="telefono" class="form-control" placeholder="Teléfono (*)" type="text">
+                                                <input id="telefono" name="telefono" autocomplete="off" (keyup)="formulario(3)" [(ngModel)]="telefono" class="form-control" placeholder="Teléfono (*)" type="text">
                                             </div>
                                             <div class="col-md-12">
-                                                <textarea cols="50" id="mensaje" name="mensaje" autocomplete="off" [(ngModel)]="mensaje" class="form-control" placeholder="¿Tienes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones) (*)" rows="4"></textarea>
+                                                <textarea cols="50" id="mensaje" name="mensaje" autocomplete="off" (keyup)="formulario(4)" [(ngModel)]="mensaje" class="form-control" placeholder="¿Tienes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones) (*)" rows="4"></textarea>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('confirm')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
