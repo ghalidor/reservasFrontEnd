@@ -40,7 +40,7 @@ export class LayoutclienteComponent implements OnInit {
   Bhora: string;
   Bzona: string;
 
-  BfechaAny:any;
+  BfechaAny: any;
 
   listaZonas: Zonas[];
   listaMesas: Mesas[];
@@ -60,6 +60,8 @@ export class LayoutclienteComponent implements OnInit {
     this.Bfecha = "";
     this.Bhora = "";
     this.Bzona = "";
+    this.bsInlineValue = null;
+    this.BfechaAny = null;
   }
 
   avanzar(posicion: string) {
@@ -67,41 +69,54 @@ export class LayoutclienteComponent implements OnInit {
     const fieldset = document.getElementById("field_" + posicion);
     const fieldsetAnterior = document.getElementById(fieldset.previousElementSibling.id);
     var step = false;
-    var message="";
+    var message = "";
     switch (fieldsetAnterior.id) {
       case 'field_personas':
         step = this.BcantP > 0 ? true : false;
-        message="Seleccione Cantidad de Personas";
+        message = "Seleccione Cantidad de Personas";
         break;
       case 'field_calendar':
-        this.Bfecha = moment(this.BfechaAny, "DD-MM-YYYY").format("YYYY-MM-DD");
+        if (this.BfechaAny != null) {
+          this.Bfecha = moment(this.BfechaAny, "DD-MM-YYYY").format("YYYY-MM-DD");
+        }
+
         step = this.Bfecha != "" ? true : false;
-        message="Seleccione Fecha para la reservación";
+        message = "Seleccione Fecha para la reservación";
         break;
       case 'field_hora':
         step = this.Bhora != "" ? true : false;
-        message="Seleccione Hora para la reservación";
+        message = "Seleccione Hora de la reservación";
         break;
       case 'field_zona':
         step = this.Bzona != "" ? true : false;
-        message="Seleccione Zona para la reservación";
+        message = "Seleccione Zona para la reservación";
         break;
-        case 'field_confirm':
-          message="Complete los campos obligatorios";
-          step = this.Bzona != "" ? true : false;
-          break;
+      case 'field_confirm':
+        message = "Complete los campos obligatorios";
+        step = this.Bzona != "" ? true : false;
+        break;
     }
 
-    console.log(this.Bfecha)
     if (step) {
       box.classList.add("active");
       fieldset.style.display = 'block';
-      fieldsetAnterior.style.display = 'none'; 
+      fieldsetAnterior.style.display = 'none';
     }
-    else{
+    else {
       this.toastr.warning(message);
     }
-    console.log(fieldset.previousElementSibling.id);
+  }
+
+
+  onDateSelect(event) {
+    this.BfechaAny = moment(event).format("DD-MM-YYYY");
+    //console.log(event)
+  }
+
+  horaReserva(hora:string){
+    var fecha = moment().format("YYYY-MM-DD");
+    this.Bhora = moment(fecha+" "+hora).format("hh:mm a");
+    console.log(this.Bhora)
   }
 
   retroceder(posicion: string) {

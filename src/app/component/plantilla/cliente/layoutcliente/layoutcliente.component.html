@@ -60,7 +60,7 @@
                                                 <div class="person"><a id="ca4" href="javascript:void(0);" (click)="cantidadPersonas(4)" class="person-link">4</a></div>
                                                 <div class="person"><a id="ca5" href="javascript:void(0);" (click)="cantidadPersonas(5)" class="person-link">5</a></div>
                                                 <div class="person"><a id="ca6" href="javascript:void(0);" (click)="cantidadPersonas(6)" class="person-link">6</a></div>
-                                                <div class="person"><a id="ca7"  href="javascript:void(0);" (click)="cantidadPersonas(7)" class="person-link">7</a></div>
+                                                <div class="person"><a id="ca7" href="javascript:void(0);" (click)="cantidadPersonas(7)" class="person-link">7</a></div>
                                                 <div class="person"><a id="ca8" href="javascript:void(0);" (click)="cantidadPersonas(8)" class="person-link">8</a></div>
                                                 <div class="person"><a id="ca9" href="javascript:void(0);" (click)="cantidadPersonas(9)" class="person-link">9</a></div>
                                                 <div class="person"><a id="ca10" href="javascript:void(0);" (click)="cantidadPersonas(10)" class="person-link">10</a></div>
@@ -80,7 +80,7 @@
                                     <fieldset id="field_calendar">
 
                                         <div class="col-md-12 mb-4">
-                                            <bs-datepicker-inline name="reserva_fecha" ngDefaultControl  [bsValue]="bsInlineValue"  [(ngModel)]="BfechaAny" [bsConfig]="{ isAnimated: true,showWeekNumbers: false,dateInputFormat: 'DD-MM-YYYY',useUtc: false }"></bs-datepicker-inline>
+                                            <bs-datepicker-inline name="reserva_fecha" ngDefaultControl [(ngModel)]="BfechaAny" (bsValueChange)="onDateSelect($event)" [bsConfig]="{datesDisabled :[], isAnimated: true,showWeekNumbers: false,dateInputFormat: 'DD-MM-YYYY',useUtc: false }"></bs-datepicker-inline>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('calendar')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
                                         <button class="btn-content" (click)="avanzar('hora')" style="margin:4px">Continuar  <i class="fa fa-angle-right" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: fixed;"></i></button>
@@ -92,7 +92,7 @@
                                             <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija una hora</h2>
 
                                             <div class="people">
-                                                <div class="person horas" *ngFor="let regHora of listaHoras"><a href="javascript:void(0);" class="person-link">{{regHora}}</a></div>
+                                                <div class="person horas" *ngFor="let regHora of listaHoras"><a href="javascript:void(0);" (click)="horaReserva(regHora)" class="person-link">{{regHora}}</a></div>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('hora')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
@@ -112,26 +112,26 @@
 
                                     </fieldset>
                                     <fieldset id="field_confirm">
-                                        
-                                            <div class="row mb-4">
 
-                                                <div class="col-md-6">
-                                                    <input id="nombre" name="nombre" class="form-control" placeholder="Nombre(s) y Apellido(s)" type="text">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input id="nrodocumento" name="nrodocumento" class="form-control" placeholder="Nro Documento" type="text">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input id="telefono" name="telefono" class="form-control" placeholder="Teléfono" type="text">
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <textarea cols="50" id="mensaje" name="mensaje" class="form-control" placeholder="¿TIenes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones)" rows="4"></textarea>
-                                                </div>
+                                        <div class="row mb-4">
+
+                                            <div class="col-md-6">
+                                                <input id="nombre" name="nombre" class="form-control" placeholder="Nombre(s) y Apellido(s)" type="text">
                                             </div>
-                                            <button class="btn-content" (click)="retroceder('confirm')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
-                                            <button class="btn-content" style="margin:4px">REGISTRE  <i class="fa fa-check" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: fixed;"></i></button>
+                                            <div class="col-md-3">
+                                                <input id="nrodocumento" name="nrodocumento" class="form-control" placeholder="Nro Documento" type="text">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input id="telefono" name="telefono" class="form-control" placeholder="Teléfono" type="text">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <textarea cols="50" id="mensaje" name="mensaje" class="form-control" placeholder="¿TIenes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones)" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                        <button class="btn-content" (click)="retroceder('confirm')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
+                                        <button class="btn-content" style="margin:4px">REGISTRE  <i class="fa fa-check" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: fixed;"></i></button>
 
-                                    
+
                                     </fieldset>
                                 </div>
                             </div>
