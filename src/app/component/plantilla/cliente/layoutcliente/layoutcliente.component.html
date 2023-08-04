@@ -42,11 +42,21 @@
                                 <div id="msform">
                                     <!-- progressbar -->
                                     <ul id="progressbar">
-                                        <li class="active" id="personas"><strong>Personas</strong></li>
-                                        <li id="calendar"><strong>Fecha</strong></li>
-                                        <li id="hora"><strong>Hora</strong></li>
-                                        <li id="zona"><strong>Zona</strong></li>
-                                        <li id="confirm"><strong>Tus Datos</strong></li>
+                                        <li class="active" id="personas"><strong>Personas</strong>
+                                            <div>{{HcantP}}</div>
+                                        </li>
+                                        <li id="calendar"><strong>Fecha</strong>
+                                            <div>{{Hfecha}}</div>
+                                        </li>
+                                        <li id="hora"><strong>Hora</strong>
+                                            <div>{{Hhora}}</div>
+                                        </li>
+                                        <li id="zona"><strong>Zona</strong>
+                                            <div>{{Hzona}}</div>
+                                        </li>
+                                        <li id="confirm"><strong>Tus Datos</strong>
+                                            <div>{{HcantP}}</div>
+                                        </li>
                                     </ul>
                                     <!-- fieldsets -->
                                     <fieldset id="field_personas">
@@ -92,7 +102,7 @@
                                             <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija una hora</h2>
 
                                             <div class="people">
-                                                <div class="person horas" *ngFor="let regHora of listaHoras"><a href="javascript:void(0);" (click)="horaReserva(regHora)" class="person-link">{{regHora}}</a></div>
+                                                <div class="person horas" *ngFor="let regHora of listaHoras,let i=index"><a href="javascript:void(0);" (click)="horaReserva(regHora,i)" class="person-link hora_{{i}}">{{regHora}}</a></div>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('hora')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
@@ -104,7 +114,7 @@
                                             <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija una Zona</h2>
 
                                             <div class="people">
-                                                <div class="person zonas" *ngFor="let regZona of listaZonas"><a href="javascript:void(0);" class="person-link">{{regZona.Descripcion}}</a></div>
+                                                <div class="person zonas" *ngFor="let regZona of listaZonas"><a href="javascript:void(0);" (click)="zonaReserva(regZona.ZonaId,regZona.EsActivo)" id="zona_{{regZona.ZonaId}}" class="person-link">{{regZona.Descripcion}}</a></div>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('zona')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
@@ -116,20 +126,20 @@
                                         <div class="row mb-4">
 
                                             <div class="col-md-6">
-                                                <input id="nombre" name="nombre" class="form-control" placeholder="Nombre(s) y Apellido(s)" type="text">
+                                                <input id="nombre" name="nombre" autocomplete="off" [(ngModel)]="nombres" class="form-control" placeholder="Nombre(s) y Apellido(s) (*)" type="text">
                                             </div>
                                             <div class="col-md-3">
-                                                <input id="nrodocumento" name="nrodocumento" class="form-control" placeholder="Nro Documento" type="text">
+                                                <input id="nrodocumento" name="nrodocumento" autocomplete="off" [(ngModel)]="nrodocumento" class="form-control" placeholder="Nro Documento (*)" type="text">
                                             </div>
                                             <div class="col-md-3">
-                                                <input id="telefono" name="telefono" class="form-control" placeholder="Teléfono" type="text">
+                                                <input id="telefono" name="telefono" autocomplete="off" [(ngModel)]="telefono" class="form-control" placeholder="Teléfono (*)" type="text">
                                             </div>
                                             <div class="col-md-12">
-                                                <textarea cols="50" id="mensaje" name="mensaje" class="form-control" placeholder="¿TIenes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones)" rows="4"></textarea>
+                                                <textarea cols="50" id="mensaje" name="mensaje" autocomplete="off" [(ngModel)]="mensaje" class="form-control" placeholder="¿Tienes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones) (*)" rows="4"></textarea>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('confirm')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
-                                        <button class="btn-content" style="margin:4px">REGISTRE  <i class="fa fa-check" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: fixed;"></i></button>
+                                        <button class="btn-content" (click)="registrarReserva()" style="margin:4px">REGISTRE  <i class="fa fa-check" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: fixed;"></i></button>
 
 
                                     </fieldset>

@@ -5703,7 +5703,6 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
         width: 17% !important;
         overflow: hidden;
     }
-
     #reservation .people .zonas {
         display: inline-block;
         padding: 10px 4px;
@@ -5741,7 +5740,7 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     border-radius: 50%;
     padding: 4px;
     font-size: 16px;
-    text-shadow:rgb(59 84 137) 1px 1px 1px;
+    text-shadow: rgb(59 84 137) 1px 1px 1px;
 }
 
 #reservation .bs-datepicker-body table td span:hover {
@@ -5817,7 +5816,7 @@ body::-webkit-scrollbar-track {
 #reservation .people .person {
     display: inline-block;
     padding: 10px 4px;
-    width: 50% ;
+    width: 50%;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -5846,6 +5845,15 @@ body::-webkit-scrollbar-track {
 }
 
 #reservation span.is-other-month {
-    color:#616161;
+    color: #616161;
     text-shadow: rgb(130 135 145) 1px 1px 1px !important;
+}
+
+#reservation input:-internal-autofill-selected,
+#reservation input:-webkit-autofill,
+#reservation input:-webkit-autofill:hover,
+#reservation input:-webkit-autofill:focus,
+#reservation input:-webkit-autofill:active {
+    background-color: rgba(48, 52, 64, 0.8) !important;
+    color: #dc9d3f !important;
 }

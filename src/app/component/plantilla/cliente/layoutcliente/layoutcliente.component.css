@@ -65,7 +65,7 @@
     box-shadow: none !important;
     border: none;
     font-weight: bold;
-    border-bottom: 2px solid skyblue;
+    border-bottom: 2px solid #dc9d3f;
     outline-width: 0;
 }
 
@@ -323,6 +323,6 @@ select.list-dt:focus {
     margin: 0 auto;
 }
 
-.orange{
+.orange {
     background-color: #dc9d3f !important;
 }

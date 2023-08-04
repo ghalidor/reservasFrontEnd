@@ -34,14 +34,18 @@ export class LayoutclienteComponent implements OnInit {
   Hhora: string;
   Hzona: string;
 
-
   BcantP: number;
   Bfecha: string;
   Bhora: string;
-  Bzona: string;
+  Bzona: number;
 
   BfechaAny: any;
 
+  nombres:string;
+  nrodocumento:string;
+  telefono:string;
+  mensaje:string;
+  
   listaZonas: Zonas[];
   listaMesas: Mesas[];
 
@@ -59,7 +63,7 @@ export class LayoutclienteComponent implements OnInit {
     this.BcantP = 0;
     this.Bfecha = "";
     this.Bhora = "";
-    this.Bzona = "";
+    this.Bzona = 0;
     this.bsInlineValue = null;
     this.BfechaAny = null;
   }
@@ -88,12 +92,12 @@ export class LayoutclienteComponent implements OnInit {
         message = "Seleccione Hora de la reservación";
         break;
       case 'field_zona':
-        step = this.Bzona != "" ? true : false;
+        step = this.Bzona != 0 ? true : false;
         message = "Seleccione Zona para la reservación";
         break;
       case 'field_confirm':
         message = "Complete los campos obligatorios";
-        step = this.Bzona != "" ? true : false;
+        step = this.Bzona != 0 ? true : false;
         break;
     }
 
@@ -105,18 +109,6 @@ export class LayoutclienteComponent implements OnInit {
     else {
       this.toastr.warning(message);
     }
-  }
-
-
-  onDateSelect(event) {
-    this.BfechaAny = moment(event).format("DD-MM-YYYY");
-    //console.log(event)
-  }
-
-  horaReserva(hora:string){
-    var fecha = moment().format("YYYY-MM-DD");
-    this.Bhora = moment(fecha+" "+hora).format("hh:mm a");
-    console.log(this.Bhora)
   }
 
   retroceder(posicion: string) {
@@ -138,6 +130,44 @@ export class LayoutclienteComponent implements OnInit {
     hijos.forEach(x => x.classList.remove("orange"));
     caActual.classList.add("orange");
     this.BcantP = cantidad;
+  }
+
+  onDateSelect(event) {
+    this.BfechaAny = moment(event).format("DD-MM-YYYY");
+    this.Hfecha=this.BfechaAny;
+    //console.log(event)
+  }
+
+  horaReserva(hora:string,indice:number){
+    var fecha = moment().format("YYYY-MM-DD");
+    this.Bhora = moment(fecha+" "+hora,"YYYY-MM-DD hh:mm a").format("HH:mm a");
+    const hora_actual = document.getElementsByClassName("hora_" + indice);
+    this.Hhora=hora_actual[0].textContent;
+    const padre = hora_actual[0].parentElement.parentElement;
+    const hijos = padre.querySelectorAll("a");
+    hijos.forEach(x => x.classList.remove("orange"));
+    hora_actual[0].classList.add("orange");
+    console.log(this.Bhora)
+  }
+
+  zonaReserva(id:number,estado:boolean){
+    if(estado){
+      const zona_actual = document.getElementById("zona_" + id);
+      const padre = zona_actual.parentElement.parentElement;
+      const hijos = padre.querySelectorAll("a");
+      hijos.forEach(x => x.classList.remove("orange"));
+      zona_actual.classList.add("orange");
+      this.Bzona=id;
+      this.Hzona=zona_actual.textContent;
+    }
+    else{
+      this.toastr.warning("Zona sin espacio para reservación");
+    }
+    console.log(this.Hzona)
+  }
+
+  registrarReserva(){
+    
   }
 
   ListaZonas() {
