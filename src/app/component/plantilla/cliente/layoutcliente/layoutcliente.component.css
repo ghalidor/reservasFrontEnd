@@ -326,3 +326,15 @@ select.list-dt:focus {
 .orange {
     background-color: #dc9d3f !important;
 }
+
+.bloqueo {
+    text-decoration: line-through !important;
+    color: #9E9E9E !important;
+    background: #555252;
+}
+
+.bloqueo:hover {
+    background: transparent !important;
+    color: #9E9E9E !important;
+    background: #555252 !important;
+}

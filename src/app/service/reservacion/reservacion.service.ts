@@ -16,5 +16,8 @@ export class ReservacionService {
     return this.httpclient.post<ReservacionNuevo>(url, reserva, { headers });
   }
 
-
+  GetReservaHoraZonamesaLibre(fecha: string): Observable<any> {
+    const url = `${this.apiUrl}Reservas/ListarReservaHorasZonaMesaLibre/${fecha}`;
+    return this.httpclient.get(url);
+  }
 }

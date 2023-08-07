@@ -2610,7 +2610,7 @@ video {
 /** general **/
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: cursive;
     font-size: 12px;
     line-height: 1.5;
     font-style: normal;
@@ -5639,14 +5639,14 @@ ng-select.ng-invalid .ng-select-container {
 }
 
 #reservation .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-    background-color: #22252f;
+    background-color: #2d313c;
     color: #fff;
 }
 
 #reservation .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
-    color: #333;
-    background-color: #ebf5ff;
+    color: #fff;
+    background-color: #dc9d3f;
 }
 
 #reservation ::placeholder {
@@ -5717,6 +5717,10 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     box-shadow: none !important;
 }
 
+#reservation .bs-datepicker-body table td {
+    color: #dc9d3f;
+}
+
 #reservation .bs-datepicker button span {
     text-shadow: black 1px 1px 1px;
     font-size: 18px;
@@ -5740,7 +5744,7 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     border-radius: 50%;
     padding: 4px;
     font-size: 16px;
-    text-shadow: rgb(59 84 137) 1px 1px 1px;
+    text-shadow: rgb(18 12 0) 1px 1px 1px;
 }
 
 #reservation .bs-datepicker-body table td span:hover {
@@ -5845,8 +5849,10 @@ body::-webkit-scrollbar-track {
 }
 
 #reservation span.is-other-month {
-    color: #616161;
-    text-shadow: rgb(130 135 145) 1px 1px 1px !important;
+    color: #727272 !important;
+    text-shadow: rgb(37 38 41) 1px 1px 1px !important;
+    text-decoration: line-through !important;
+    background: #3f5981 !important;
 }
 
 #reservation input:-internal-autofill-selected,
@@ -5856,4 +5862,24 @@ body::-webkit-scrollbar-track {
 #reservation input:-webkit-autofill:active {
     background-color: rgba(48, 52, 64, 0.8) !important;
     color: #dc9d3f !important;
+}
+
+#reservation .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    box-sizing: content-box;
+    background: none transparent;
+    border: 0 none;
+    box-shadow: none;
+    outline: none;
+    padding: 0;
+    cursor: default;
+    width: 100%;
+}
+
+#reservation .bs-datepicker-body table td span.disabled,
+#reservation .bs-datepicker-body table td.disabled span {
+    color: #727272 !important;
+    /* text-shadow: none !important; */
+    text-shadow: rgb(37 38 41) 1px 1px 1px !important;
+    text-decoration: line-through !important;
+    background: #555252 !important;
 }

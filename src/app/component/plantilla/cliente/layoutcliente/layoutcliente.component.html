@@ -20,11 +20,12 @@
         </div>
     </section>
     <div id="logo" class="brand-fastresto noselect animfadeInLeft" data-time="0">
-        <a href="index.html"><img alt="background" src="../../../../assets/img/logo.png">
+        <a href="#" style="font-size: 14px;">
+            <span class="">Reservas</span> <span class="text-warning"> Camacho</span>
         </a>
     </div>
     <app-header></app-header>
-    <app-body></app-body>
+    <app-body [empresaData]="empresa"></app-body>
     <section aria-label="section-reservation">
         <div id="reservation" class="reser gray-popup-block mfp-hide animbounceInDown">
             <div class="devider-doted">
@@ -32,8 +33,8 @@
                     <div class="col-md-12">
                         <h3 class="latin-font color" style="margin-top: 1px;">Registra tu Reservación</h3>
                         <div class="devider-black"></div>
-                        <p>Abrimos de Domingo - Sabado, de 10:00 a 01:00</p>
-                        <span>Phone +6221 00 88 99</span>
+                        <p>Aténdemos de {{tituloSemana}}, de {{empresa.AtencionHoraInicio}} a {{empresa.AtencionHoraFin}}</p>
+                        <span>Teléfono {{empresa.Telefono}}</span>
 
                     </div>
                     <div class="col-md-12 text-center">
@@ -55,7 +56,7 @@
                                             <div class="text-success">{{Hzona}}</div>
                                         </li>
                                         <li id="confirm"><strong>Tus Datos</strong>
-                                            <div ><i *ngIf="mostrar" style="color: green;" class="fa fa-check-circle"></i></div>
+                                            <div><i *ngIf="mostrar" style="color: green;" class="fa fa-check-circle"></i></div>
                                         </li>
                                     </ul>
                                     <!-- fieldsets -->
@@ -63,19 +64,19 @@
                                         <div class="col-md-12">
                                             <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija la cantidad de personas</h2>
 
-                                            <div class="people">
-                                                <div class="person"><a id="ca1" href="javascript:void(0);" (click)="cantidadPersonas(1)" class="person-link">1</a></div>
-                                                <div class="person"><a id="ca2" href="javascript:void(0);" (click)="cantidadPersonas(2)" class="person-link">2</a></div>
-                                                <div class="person"><a id="ca3" href="javascript:void(0);" (click)="cantidadPersonas(3)" class="person-link">3</a></div>
-                                                <div class="person"><a id="ca4" href="javascript:void(0);" (click)="cantidadPersonas(4)" class="person-link">4</a></div>
-                                                <div class="person"><a id="ca5" href="javascript:void(0);" (click)="cantidadPersonas(5)" class="person-link">5</a></div>
-                                                <div class="person"><a id="ca6" href="javascript:void(0);" (click)="cantidadPersonas(6)" class="person-link">6</a></div>
-                                                <div class="person"><a id="ca7" href="javascript:void(0);" (click)="cantidadPersonas(7)" class="person-link">7</a></div>
-                                                <div class="person"><a id="ca8" href="javascript:void(0);" (click)="cantidadPersonas(8)" class="person-link">8</a></div>
-                                                <div class="person"><a id="ca9" href="javascript:void(0);" (click)="cantidadPersonas(9)" class="person-link">9</a></div>
-                                                <div class="person"><a id="ca10" href="javascript:void(0);" (click)="cantidadPersonas(10)" class="person-link">10</a></div>
-                                                <div class="person"><a id="ca11" href="javascript:void(0);" (click)="cantidadPersonas(11)" class="person-link">11</a></div>
-                                                <div class="person"><a id="ca12" href="javascript:void(0);" (click)="cantidadPersonas(12)" class="person-link">12</a></div>
+                                            <div id="listaCantidad" class="people">
+                                                <div class="person"><a id="ca1" href="javascript:void(0);" (click)="cantidadPersonas(1)" class="cantPersona person-link">1</a></div>
+                                                <div class="person"><a id="ca2" href="javascript:void(0);" (click)="cantidadPersonas(2)" class="cantPersona person-link">2</a></div>
+                                                <div class="person"><a id="ca3" href="javascript:void(0);" (click)="cantidadPersonas(3)" class="cantPersona person-link">3</a></div>
+                                                <div class="person"><a id="ca4" href="javascript:void(0);" (click)="cantidadPersonas(4)" class="cantPersona person-link">4</a></div>
+                                                <div class="person"><a id="ca5" href="javascript:void(0);" (click)="cantidadPersonas(5)" class="cantPersona person-link">5</a></div>
+                                                <div class="person"><a id="ca6" href="javascript:void(0);" (click)="cantidadPersonas(6)" class="cantPersona person-link">6</a></div>
+                                                <div class="person"><a id="ca7" href="javascript:void(0);" (click)="cantidadPersonas(7)" class="cantPersona person-link">7</a></div>
+                                                <div class="person"><a id="ca8" href="javascript:void(0);" (click)="cantidadPersonas(8)" class="cantPersona person-link">8</a></div>
+                                                <div class="person"><a id="ca9" href="javascript:void(0);" (click)="cantidadPersonas(9)" class="cantPersona person-link">9</a></div>
+                                                <div class="person"><a id="ca10" href="javascript:void(0);" (click)="cantidadPersonas(10)" class="cantPersona person-link">10</a></div>
+                                                <div class="person"><a id="ca11" href="javascript:void(0);" (click)="cantidadPersonas(11)" class="cantPersona person-link">11</a></div>
+                                                <div class="person"><a id="ca12" href="javascript:void(0);" (click)="cantidadPersonas(12)" class="cantPersona person-link">12</a></div>
                                             </div>
 
                                             <!-- <input id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad" type="text"> -->
@@ -90,7 +91,7 @@
                                     <fieldset id="field_calendar">
 
                                         <div class="col-md-12 mb-4">
-                                            <bs-datepicker-inline name="reserva_fecha" ngDefaultControl [(ngModel)]="BfechaAny" (bsValueChange)="onDateSelect($event)" [bsConfig]="{datesDisabled :[], isAnimated: true,showWeekNumbers: false,dateInputFormat: 'DD-MM-YYYY',useUtc: false }"></bs-datepicker-inline>
+                                            <bs-datepicker-inline name="reserva_fecha" ngDefaultControl [(ngModel)]="BfechaAny" (bsValueChange)="onDateSelect($event)" [bsConfig]="{datesDisabled :[], daysDisabled:daysDisables,isAnimated: true,showWeekNumbers: false,dateInputFormat: 'DD-MM-YYYY',useUtc: false }"></bs-datepicker-inline>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('calendar')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
                                         <button class="btn-content" (click)="avanzar('hora')" style="margin:4px">Continuar  <i class="fa fa-angle-right" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: fixed;"></i></button>
@@ -102,7 +103,7 @@
                                             <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija una hora</h2>
 
                                             <div class="people">
-                                                <div class="person horas" *ngFor="let regHora of listaHoras,let i=index"><a href="javascript:void(0);" (click)="horaReserva(regHora,i)" class="person-link hora_{{i}}">{{regHora}}</a></div>
+                                                <div class="person horas" *ngFor="let regHora of listaHoras,let i=index"><a href="javascript:void(0);" (click)="horaReserva(regHora.Hora,i)" class="person-link hora_{{i}}" [ngClass]="regHora.IsActivo?'':'bloqueo'">{{regHora.Hora}}</a></div>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('hora')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
@@ -114,7 +115,7 @@
                                             <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija una Zona</h2>
 
                                             <div class="people">
-                                                <div class="person zonas" *ngFor="let regZona of listaZonas"><a href="javascript:void(0);" (click)="zonaReserva(regZona.ZonaId,regZona.EsActivo)" id="zona_{{regZona.ZonaId}}" class="person-link">{{regZona.Descripcion}}</a></div>
+                                                <div class="person zonas" *ngFor="let regZona of listaZonas"><a href="javascript:void(0);" (click)="zonaReserva(regZona.ZonaId,regZona.EsActivo)" id="zona_{{regZona.ZonaId}}" class="person-link {{regZona.EsActivo?'':'bloqueo'}}">{{regZona.Descripcion}}</a></div>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('zona')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>
@@ -136,6 +137,12 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <textarea cols="50" id="mensaje" name="mensaje" autocomplete="off" (keyup)="formulario(4)" [(ngModel)]="mensaje" class="form-control" placeholder="¿Tienes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones) (*)" rows="4"></textarea>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <ng-select class="" placeholder="¿Mascotas?" (change)="formulario(5)" [(ngModel)]="mascotas" [clearable]="true" [searchable]="false" [multiple]="false">
+                                                    <ng-option [value]="true">SI <span style="font-size: 11px;">(Mascotas)</span></ng-option>
+                                                    <ng-option [value]="false">NO <span style="font-size: 11px;">(Mascotas)</span></ng-option>
+                                                </ng-select>
                                             </div>
                                         </div>
                                         <button class="btn-content" (click)="retroceder('confirm')" style="margin:4px"><i class="fa fa-angle-left" style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: fixed;"></i> Regresar </button>

@@ -7,4 +7,21 @@ export class ReservacionNuevo {
     Nombre:string;
     Telefono:string;
     Mensaje:string;
+    Mascotas:boolean;
+}
+
+export class ListaHorasZonaMesasLibre {
+    Hora: string;
+    Fecha: Date;
+    IsActivo: boolean;
+    ZonasLibres:zonasLista[];
+}
+
+export class zonasLista {
+    ZonaId: number;
+    Descripcion: String;
+    SucursalId: number;
+    EsActivo: boolean;
+    EmpresaId: number;
+    Servidor: boolean;
 }
