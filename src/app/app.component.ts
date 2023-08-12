@@ -1,4 +1,4 @@
-import { Component, OnInit,OnDestroy,AfterViewInit  } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { GlobalEmpresaService } from './service/globalEmpresa/global-empresa.service';
 import { EmpresaService } from './service/empresa/empresa.service';
 import { Empresa } from './module/Empresa';
@@ -11,19 +11,19 @@ import { map } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit,AfterViewInit  {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'Reservas';
   empresa = new Empresa;
   networkStatus: boolean = false;
   networkStatus$: Subscription = Subscription.EMPTY;
-  constructor(private empresaService: EmpresaService, 
+  constructor(private empresaService: EmpresaService,
     private globalEmpresaService: GlobalEmpresaService,
     private router: Router
   ) {
     // this.globalEmpresaService.empresaObjeto.subscribe({
     //   next: newValue => console.log('Update Detected:', newValue)
     // });
-   
+
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit,AfterViewInit  {
     this.networkStatus$.unsubscribe();
   }
 
-  ngAfterViewInit (): void {
+  ngAfterViewInit(): void {
     this.RegistroEmpresa();
   }
 

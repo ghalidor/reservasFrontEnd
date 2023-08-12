@@ -19,6 +19,8 @@ import { HeaderComponent } from './component/plantilla/header/header.component';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
 import { LandingComponent } from './component/landing/landing.component';
+import { ListaReservasComponent } from './component/mantenimiento/lista-reservas/lista-reservas.component';
+import { MesasZonasComponent } from './component/mantenimiento/mesas-zonas/mesas-zonas.component';
 
 //defineLocale('de', deLocale);
 
@@ -30,6 +32,8 @@ import { LandingComponent } from './component/landing/landing.component';
     FooterComponent,
     HeaderComponent,
     LandingComponent,
+    ListaReservasComponent,
+    MesasZonasComponent,
   ],
   imports: [
     BrowserModule,

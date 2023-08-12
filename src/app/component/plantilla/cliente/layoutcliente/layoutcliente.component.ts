@@ -7,7 +7,7 @@ import { zonas } from 'src/app/module/zonas';
 import { mesas } from 'src/app/module/mesas';
 import { ZonasService } from 'src/app/service/zonas/zonas.service';
 import { MesasService } from 'src/app/service/mesas/mesas.service';
-
+import { EmpresaService } from 'src/app/service/empresa/empresa.service';
 import { ReservacionService } from 'src/app/service/reservacion/reservacion.service';
 import { ReservacionNuevo, ListaHorasZonaMesasLibre } from 'src/app/module/reservacion';
 import { Router } from '@angular/router';
@@ -74,6 +74,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     private mesasService: MesasService,
     private zonasServices: ZonasService,
     private globalEmpresaService: GlobalEmpresaService,
+    private empresaService: EmpresaService,
     private router: Router) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -81,7 +82,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     //this.toastr.warning("Seleccione Empresa/Sede");
-
+    this.RegistroEmpresa();
     this.ListaZonas();
     this.tituloSemana = "";
     this.mostrar = false;
@@ -362,7 +363,37 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
           this.daysDisables.push(i);
         }
       }
-    }, 0)
+    }, 0);
   }
 
+
+  
+  RegistroEmpresa() {
+    this.empresaService.RegistroEmpresa().subscribe({
+      next: response => {
+        this.empresa = response.data;
+        if (this.empresa != null) {
+          this.globalEmpresaService.empresaObjeto.next({
+            Empresa_id: this.empresa.Empresa_id,
+            Nombre: this.empresa.Nombre,
+            AtencionDiaInicio: this.empresa.AtencionDiaInicio,
+            AtencionDiaFin: this.empresa.AtencionDiaFin,
+            AtencionHoraInicio: this.empresa.AtencionHoraInicio,
+            AtencionHoraFin: this.empresa.AtencionHoraFin,
+            Telefono: this.empresa.Telefono,
+            Personas: this.empresa.Personas
+          });
+
+        }
+      },
+      complete: () => {
+        this.router.navigate(['inicio']);
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+
+  
 }

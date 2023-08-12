@@ -21,10 +21,10 @@
     </section>
     <div id="logo" class="brand-fastresto noselect animfadeInLeft" data-time="0">
         <a href="#" style="font-size: 14px;">
-            <span class="">Reservas</span> <span class="text-warning"> Camacho</span>
+            <span class="">Reservas</span> <span class="text-warning"> {{empresa.Nombre}}</span>
         </a>
     </div>
-    <app-header></app-header>
+    <app-header [empresaData]="empresa"></app-header>
     <app-body [empresaData]="empresa"></app-body>
     <section aria-label="section-reservation">
         <div id="reservation" class="reser gray-popup-block mfp-hide animbounceInDown">
