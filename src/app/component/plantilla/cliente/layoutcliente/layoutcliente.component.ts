@@ -100,10 +100,11 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     this.mascotas = false;
 
     this.daysDisables = [];
+    //  this.registroEmpresaGlobal();
   }
 
   ngAfterViewInit(): void {
-    this.registroEmpresaGlobal();
+    //this.registroEmpresaGlobal();
   }
 
   avanzar(posicion: string) {
@@ -188,29 +189,29 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   }
 
   horaReserva(hora: string, indice: number) {
-   
+
     var fecha = moment().format("YYYY-MM-DD");
-    
+
     const hora_actual = document.getElementsByClassName("hora_" + indice);
-    if(hora_actual[0].classList.contains("bloqueo")){
-      this.toastr.warning("No hay Zonas Libres a las "+moment(fecha + " " + hora, "YYYY-MM-DD HH:mm A").format("HH:mm A"));
+    if (hora_actual[0].classList.contains("bloqueo")) {
+      this.toastr.warning("No hay Zonas Libres a las " + moment(fecha + " " + hora, "YYYY-MM-DD HH:mm A").format("HH:mm A"));
     }
-    else{
+    else {
       this.Bhora = moment(fecha + " " + hora, "YYYY-MM-DD HH:mm A").format("HH:mm A");
       this.Hhora = hora_actual[0].textContent;
       const padre = hora_actual[0].parentElement.parentElement;
       const hijos = padre.querySelectorAll("a");
       hijos.forEach(x => x.classList.remove("orange"));
       hora_actual[0].classList.add("orange");
-  
+
       this.listaZonas.forEach(obj => {
         var existe = this.listaHoras.find(x => x.Hora == this.Bhora && x.ZonasLibres.find(y => y.EsActivo == false && y.ZonaId == obj.ZonaId));
         //var existe = idMesa.ZonasLibres.find(x => x.ZonaId == obj.ZonaId);
         if (existe) {
           obj.EsActivo = false;
-          if(this.Bzona==obj.ZonaId){
-            this.Bzona=0;
-            this.Hzona=null;
+          if (this.Bzona == obj.ZonaId) {
+            this.Bzona = 0;
+            this.Hzona = null;
             console.log("zona_" + obj.ZonaId)
             const zona_actual = document.getElementById("zona_" + obj.ZonaId);
             zona_actual.classList.remove("bloqueo");
@@ -222,7 +223,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
         }
       })
     }
-    
+
   }
 
   zonaReserva(id: number, estado: boolean) {
@@ -327,10 +328,10 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     this.reservacionService.GetReservaHoraZonamesaLibre(this.Bfecha).subscribe({
       next: response => {
         this.listaHoras = response.data.lista;
-        this.Hzona=null;
-        this.Bzona=0;
-        this.Hhora=null;
-        this.Bhora="";
+        this.Hzona = null;
+        this.Bzona = 0;
+        this.Hhora = null;
+        this.Bhora = "";
         const fielzona = document.getElementById("field_zona");
         const hijos = fielzona.querySelectorAll("a");
         hijos.forEach(x => x.classList.remove("orange"));
@@ -367,27 +368,29 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   }
 
 
-  
+
   RegistroEmpresa() {
     this.empresaService.RegistroEmpresa().subscribe({
       next: response => {
         this.empresa = response.data;
-        if (this.empresa != null) {
-          this.globalEmpresaService.empresaObjeto.next({
-            Empresa_id: this.empresa.Empresa_id,
-            Nombre: this.empresa.Nombre,
-            AtencionDiaInicio: this.empresa.AtencionDiaInicio,
-            AtencionDiaFin: this.empresa.AtencionDiaFin,
-            AtencionHoraInicio: this.empresa.AtencionHoraInicio,
-            AtencionHoraFin: this.empresa.AtencionHoraFin,
-            Telefono: this.empresa.Telefono,
-            Personas: this.empresa.Personas
-          });
+        var fecha = moment().format("YYYY-MM-DD");
+        this.empresa.AtencionHoraInicio = moment(fecha + " " + this.empresa.AtencionHoraInicio, "YYYY-MM-DD HH:mm a").format("hh:mm a");
+        this.empresa.AtencionHoraFin = moment(fecha + " " + this.empresa.AtencionHoraFin, "YYYY-MM-DD HH:mm a").format("hh:mm a");
+        this.tituloSemana = this.weekdays[this.empresa.AtencionDiaInicio] + " - " + this.weekdays[this.empresa.AtencionDiaFin];
+        const permisoCantidadPersonas = document.getElementById("listaCantidad");
+        const links = permisoCantidadPersonas.querySelectorAll("a");
+        links.forEach(x => Number(x.textContent) > this.empresa.Personas && x.classList.add("bloqueo"));
 
+        for (let i = 0; i < 7; i++) {
+          if (i >= this.empresa.AtencionDiaInicio && i <= this.empresa.AtencionDiaFin) {
+          }
+          else {
+            this.daysDisables.push(i);
+          }
         }
       },
       complete: () => {
-        this.router.navigate(['inicio']);
+
       },
       error: (error) => {
         console.log(error)
@@ -395,5 +398,5 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     })
   }
 
-  
+
 }
