@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
       },
       complete: () => {
-        this.router.navigate(['inicio']);
+        //this.router.navigate(['inicio']);
       },
       error: (error) => {
         console.log(error)

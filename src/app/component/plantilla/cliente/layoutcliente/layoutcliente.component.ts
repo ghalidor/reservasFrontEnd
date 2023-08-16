@@ -107,6 +107,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   }
 
   avanzar(posicion: string) {
+    this.toastr.clear();
     const box = document.getElementById(posicion);
     const fieldset = document.getElementById("field_" + posicion);
     const fieldsetAnterior = document.getElementById(fieldset.previousElementSibling.id);
@@ -116,6 +117,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
       case 'field_personas':
         step = this.BcantP > 0 ? true : false;
         message = "Seleccione Cantidad de Personas";
+        console.log(this.daysDisables)
         break;
       case 'field_calendar':
         if (this.BfechaAny != null) {
@@ -176,7 +178,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     else {
       this.toastr.warning("Cantidad no permitida");
     }
-
+    console.log(this.daysDisables)
   }
 
   onDateSelect(event) {
