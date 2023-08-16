@@ -66,7 +66,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   tituloSemana: string;
 
   daysDisables: number[];
-
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   constructor(
     private reservacionService: ReservacionService,
     private toastr: ToastrService,
@@ -81,6 +81,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    
     //this.toastr.warning("Seleccione Empresa/Sede");
     this.RegistroEmpresa();
     this.ListaZonas();
@@ -101,6 +102,11 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
     this.daysDisables = [];
     //  this.registroEmpresaGlobal();
+    $('.preloader').fadeOut('fast', function() {
+      "use strict";
+     
+  });
+  
   }
 
   ngAfterViewInit(): void {
