@@ -2859,11 +2859,9 @@ button:hover {
     font-style: normal;
     text-align: center;
     line-height: 49px;
-    color: #efefef;
+    color: #ffffff;
     border: 1px solid #dadada;
-    background: rgba(0, 0, 0, 0);
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
+    background: rgb(153 90 9 / 77%);
     border-radius: 100px;
     outline: none;
     text-shadow: none;
@@ -4719,7 +4717,7 @@ screen and (max-height:300px) {
 /* general popup */
 
 .white-popup-block {
-    max-width: 900px;
+    /* max-width: 900px; */
     margin: 20px auto;
     color: #333;
     background: #fefefe;
@@ -4727,7 +4725,7 @@ screen and (max-height:300px) {
 }
 
 .gray-popup-block {
-    max-width: 900px;
+    /* max-width: 900px; */
     margin: 0 auto;
     background: #22252f;
     padding: 40px;
@@ -5882,4 +5880,28 @@ body::-webkit-scrollbar-track {
     text-shadow: rgb(37 38 41) 1px 1px 1px !important;
     text-decoration: line-through !important;
     background: #555252 !important;
+}
+
+
+.carousel-caption {
+   
+    right: auto;
+    bottom: 7.25rem;
+    left: 20px;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #c48b11;
+    text-align: left;
+}
+
+.carousel-indicators {
+    left: 19px !important;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-right:unset;
+    margin-bottom: 10px;
+    margin-left: 10px !important;
+    right:auto;
 }

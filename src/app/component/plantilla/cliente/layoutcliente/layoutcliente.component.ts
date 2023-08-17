@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit,ViewChild, TemplateRef  } from '@angular/core';
 import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -14,8 +14,7 @@ import { Router } from '@angular/router';
 
 import { Empresa } from 'src/app/module/Empresa';
 import { GlobalEmpresaService } from 'src/app/service/globalEmpresa/global-empresa.service';
-import { contains } from 'jquery';
-
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-layoutcliente',
@@ -23,6 +22,7 @@ import { contains } from 'jquery';
   styleUrls: ['./layoutcliente.component.css']
 })
 export class LayoutclienteComponent implements OnInit, AfterViewInit {
+  closeResult = '';
   selectedCar: number;
   moment = moment;
   fechaini: Date;
@@ -62,12 +62,14 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
   empresa = new Empresa;
   reserva = new ReservacionNuevo;
+  @ViewChild('modalReserva') public templateModalmodalReserva: TemplateRef<any>;
   weekdays: string[] = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   tituloSemana: string;
 
   daysDisables: number[];
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  images = ['bg-2.jpg', 'bg-2.jpg', 'bg-2.jpg'].map((n) => `assets/img/${n}`);
   constructor(
+    private modalService: NgbModal,
     private reservacionService: ReservacionService,
     private toastr: ToastrService,
     private spinnerService: NgxSpinnerService,
@@ -103,15 +105,31 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
     this.daysDisables = [];
     //  this.registroEmpresaGlobal();
-    $('.preloader').fadeOut('fast', function() {
-      "use strict";
-     
-  });
+ 
   
   }
 
   ngAfterViewInit(): void {
     //this.registroEmpresaGlobal();
+  }
+
+  open(modal:TemplateRef<any>) {
+    this.RegistroEmpresa();
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: "xl" }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   avanzar(posicion: string) {
@@ -264,7 +282,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
   registrarReserva() {
     if (this.mostrar) {
-
+      this.spinnerService.show();
       this.reserva.Personas = this.BcantP;
       this.reserva.Fecha = this.Bfecha;
       this.reserva.Hora = this.Bhora;
@@ -290,7 +308,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
         },
         complete: () => {
-
+          this.spinnerService.hide();
         },
         error: (error) => {
           this.spinnerService.hide();
@@ -399,10 +417,11 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
         }
       },
       complete: () => {
-
+        this.spinnerService.hide();
       },
       error: (error) => {
-        console.log(error)
+        console.log(error);
+        this.spinnerService.hide();
       }
     })
   }

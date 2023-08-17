@@ -1,4 +1,5 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA,LOCALE_ID, } from '@angular/core';
+import { CommonModule,HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NgbModule,NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'; 
@@ -43,6 +44,7 @@ import { MesasZonasComponent } from './component/mantenimiento/mesas-zonas/mesas
     NgbAlertModule ,
     NgSelectModule, 
     FormsModule,
+    CommonModule,
     NgxSpinnerModule,
     TooltipModule.forRoot(),
     ToastrModule.forRoot(),
@@ -53,7 +55,7 @@ import { MesasZonasComponent } from './component/mantenimiento/mesas-zonas/mesas
     ReactiveFormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AlertConfig, BsDatepickerConfig],
+  providers: [AlertConfig, BsDatepickerConfig,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

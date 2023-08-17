@@ -1,30 +1,91 @@
-<div class="preloader" style="display: none;">
-    <div class="mainpreloader"><span></span>
-    </div>
-</div>
+
 <div id="wraperfastresto" class="intro">
-    <section class="bgfastresto" aria-label="section-background">
-        <div id="owl-slider-home" class="owl-carousel">
-            <div class="item">
-                <img alt="background" src="../../../../assets/img/bg-2.jpg">
-                <div class="overlay-home noselect"></div>
-            </div>
-            <div class="item">
-                <img alt="background" src="../../../../assets/img/bg-1.jpg">
-                <div class="overlay-home noselect"></div>
-            </div>
-            <div class="item">
-                <img alt="background" src="../../../../assets/img/bg-3.jpg">
-                <div class="overlay-home noselect"></div>
-            </div>
+    <ngx-spinner></ngx-spinner>
+    <header>
+        <div id="main-menu" class="menu-init intro">
+            <!-- mainmenu start -->
+            <nav>
+                <ul>
+                  
+                    <li class="animfadeInRight intro" data-time="1400"><a class="intro" href="javascript:void(0);" [routerLink]="['/inicio']">Inicio</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- mainmenu end -->
         </div>
-    </section>
+        <!-- navigation mobile -->
+        <div class="anim-nav intro" id="nav-icon">
+            <div class="menu-line intro"></div>
+            <div class="menu-line1 intro"></div>
+            <div class="menu-line2 intro"></div>
+        </div>
+        <!-- navigation mobile end -->
+    </header>
+    <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img [src]="images[0]" alt="Random first slide" style="width: 100%; height: 100vh" />
+            </div>
+            <div class="carousel-caption">
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img [src]="images[1]" alt="Random second slide" style="width: 100%; height: 100vh" />
+            </div>
+            <div class="carousel-caption">
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img [src]="images[2]" alt="Random third slide" style="width: 100%; height: 100vh" />
+            </div>
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+    </ngb-carousel>
     <div id="logo" class="brand-fastresto noselect animfadeInLeft" data-time="0">
         <a href="#" style="font-size: 14px;">
             <span class="">Reservas</span> <span class="text-warning"> </span>
         </a>
     </div>
+<div class="col-md-12" style="position: fixed;
+top: 75px;width: 100%;height: auto;z-index: 999;margin: auto;padding: 32px;">
+    <div class="row">
+        <div class="col-md-12 mb-4 " style="text-align: right;">
+            <button class="btn btn-sm btn-warning">+ Mesa</button>
+            <button class="btn btn-sm btn-warning">+ Zona</button>
+            <button class="btn btn-sm btn-warning">* Parametros</button>
+        </div>
+        <div class="col-md-12 ">
+            <table class="table table-responsive ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ZONA</th>
+                        <th>NRO MESA</th>
+                        <th>MESA</th>
+                        <th>PER</th>
+                        <th>FECHA</th>
+                        <th>HORA</th>
+                    </tr>
+                </thead>
+    
+            </table>
+    
+        </div>
+    </div>
+    
 
+
+</div>
+    
 
     <app-footer></app-footer>
 </div>
