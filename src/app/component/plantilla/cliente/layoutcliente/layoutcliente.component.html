@@ -1,13 +1,13 @@
-<div class="preloader">
+<!-- <div class="preloader">
     <div class="mainpreloader"><span></span>
     </div>
-</div>
+</div> -->
 <div id="wraperfastresto" class="intro">
-
+    <app-header [empresaData]="empresa"></app-header>
     <ngb-carousel *ngIf="images">
         <ng-template ngbSlide>
             <div class="picsum-img-wrapper">
-                <img [src]="images[0]" alt="Random first slide" />
+                <img [src]="images[0]" alt="Random first slide" style="width: 100%; height: 100vh" />
             </div>
             <div class="carousel-caption">
                 <h3>First slide label</h3>
@@ -16,7 +16,7 @@
         </ng-template>
         <ng-template ngbSlide>
             <div class="picsum-img-wrapper">
-                <img [src]="images[1]" alt="Random second slide" />
+                <img [src]="images[1]" alt="Random second slide" style="width: 100%; height: 100vh" />
             </div>
             <div class="carousel-caption">
                 <h3>Second slide label</h3>
@@ -25,7 +25,7 @@
         </ng-template>
         <ng-template ngbSlide>
             <div class="picsum-img-wrapper">
-                <img [src]="images[2]" alt="Random third slide" />
+                <img [src]="images[2]" alt="Random third slide" style="width: 100%; height: 100vh" />
             </div>
             <div class="carousel-caption">
                 <h3>Third slide label</h3>
@@ -35,7 +35,7 @@
     </ngb-carousel>
 
 
-    <section class="bgfastresto" aria-label="section-background">
+    <!-- <section class="bgfastresto" aria-label="section-background">
         <div id="owl-slider-home" class="owl-carousel">
             <div class="item">
                 <img alt="background" src="../../../../assets/img/bg-2.jpg">
@@ -50,13 +50,13 @@
                 <div class="overlay-home noselect"></div>
             </div>
         </div>
-    </section>
+    </section> -->
     <div id="logo" class="brand-fastresto noselect animfadeInLeft" data-time="0">
         <a href="#" style="font-size: 14px;">
             <span class="">Reservas</span> <span class="text-warning"> {{empresa.Nombre}}</span>
         </a>
     </div>
-    <app-header [empresaData]="empresa"></app-header>
+
     <app-body [empresaData]="empresa"></app-body>
     <section aria-label="section-reservation">
         <div id="reservation" class="reser gray-popup-block mfp-hide animbounceInDown">

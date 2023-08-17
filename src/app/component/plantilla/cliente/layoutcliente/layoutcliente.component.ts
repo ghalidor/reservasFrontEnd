@@ -78,6 +78,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     private router: Router) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+    
   }
 
   ngOnInit(): void {

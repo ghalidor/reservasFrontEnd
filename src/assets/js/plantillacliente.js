@@ -2,7 +2,7 @@ $(window).on("load", function() {
     "use strict";
 
     // miscellaneous var 
-  
+
     var allelement = $('div, h1, h2, h3, h4, h5, p, ul, li, a, i, button, section, span');
     var holdside = $('.holdsidebar');
 
@@ -31,7 +31,7 @@ $(window).on("load", function() {
 
 
     // start function
-    
+
 
     if (jQuery(window).width() < 1025) {
         allelement.addClass('no-animation').each(function() {
@@ -63,19 +63,19 @@ $(window).on("load", function() {
 
     // main animation all element
     function page() {
-        $([allelement]).each(function(index, foundElements) {
-            foundElements.each(function(element) {
-                var $this = $(this);
-                var time = $(this).attr('data-time');
-                setTimeout(function() {
-                    $this.addClass('intro');
-                }, time);
-            });
-            setTimeout(function() {
-                holdside.hide();
-            }, 2500);
-            $('.opening').hide();
-        });
+        // $([allelement]).each(function(index, foundElements) {
+        //     foundElements.each(function(element) {
+        //         var $this = $(this);
+        //         var time = $(this).attr('data-time');
+        //         setTimeout(function() {
+        //             $this.addClass('intro');
+        //         }, time);
+        //     });
+        //     setTimeout(function() {
+        //         holdside.hide();
+        //     }, 2500);
+        //     $('.opening').hide();
+        // });
 
 
     } // end function
