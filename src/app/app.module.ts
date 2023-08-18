@@ -23,6 +23,8 @@ import { LandingComponent } from './component/landing/landing.component';
 import { ListaReservasComponent } from './component/mantenimiento/lista-reservas/lista-reservas.component';
 import { MesasZonasComponent } from './component/mantenimiento/mesas-zonas/mesas-zonas.component';
 
+import { DataTablesModule } from "angular-datatables";
+import { DialogmesssageComponent } from './component/dialogmesssage/dialogmesssage.component';
 //defineLocale('de', deLocale);
 
 @NgModule({
@@ -35,10 +37,12 @@ import { MesasZonasComponent } from './component/mantenimiento/mesas-zonas/mesas
     LandingComponent,
     ListaReservasComponent,
     MesasZonasComponent,
+    DialogmesssageComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    DataTablesModule,
     AppRoutingModule,
     NgbModule,
     NgbAlertModule ,
@@ -47,7 +51,7 @@ import { MesasZonasComponent } from './component/mantenimiento/mesas-zonas/mesas
     CommonModule,
     NgxSpinnerModule,
     TooltipModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({ progressBar: true,progressAnimation: 'decreasing',  preventDuplicates: true,}),
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
     HttpClientModule,

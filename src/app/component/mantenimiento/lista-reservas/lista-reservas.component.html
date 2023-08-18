@@ -1,4 +1,3 @@
-
 <div id="wraperfastresto" class="intro">
     <ngx-spinner></ngx-spinner>
     <header>
@@ -6,8 +5,9 @@
             <!-- mainmenu start -->
             <nav>
                 <ul>
-                  
-                    <li class="animfadeInRight intro" data-time="1400"><a class="intro" href="javascript:void(0);" [routerLink]="['/inicio']">Inicio</a>
+
+                    <li class="animfadeInRight intro" data-time="1400"><a class="intro" href="javascript:void(0);"
+                            [routerLink]="['/inicio']">Inicio</a>
                     </li>
                 </ul>
             </nav>
@@ -55,37 +55,92 @@
             <span class="">Reservas</span> <span class="text-warning"> </span>
         </a>
     </div>
-<div class="col-md-12" style="position: fixed;
-top: 75px;width: 100%;height: auto;z-index: 999;margin: auto;padding: 32px;">
-    <div class="row">
-        <div class="col-md-12 mb-4 " style="text-align: right;">
-            <button class="btn btn-sm btn-warning">+ Mesa</button>
-            <button class="btn btn-sm btn-warning">+ Zona</button>
-            <button class="btn btn-sm btn-warning">* Parametros</button>
+    <div class="col-md-12"
+        style="position: fixed;top: 75px;width: 100%;height: auto;z-index: 999;margin: auto;padding: 32px;">
+
+        <div class="row">
+            <div class="col-lg-4 col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Fecha</span>
+                        </div>
+                        <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechaini" class="form-control"
+                            [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }"
+                            bsDatepicker>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="material-icons icon">date_range</i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Hasta</span>
+                        </div>
+                        <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechafin" class="form-control"
+                            [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }"
+                            bsDatepicker>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="material-icons icon">date_range</i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-3">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-ms" (click)="buscar()"><i class="fa fa-search"></i>BUSCAR</button>
+
+                </div>
+            </div>
         </div>
-        <div class="col-md-12 ">
-            <table class="table table-responsive ">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>ZONA</th>
-                        <th>NRO MESA</th>
-                        <th>MESA</th>
-                        <th>PER</th>
-                        <th>FECHA</th>
-                        <th>HORA</th>
-                    </tr>
-                </thead>
-    
-            </table>
-    
+
+        <div class="row">
+            <div class="col-md-12 mb-4 " style="text-align: right;">
+                <button class="btn btn-sm btn-warning">+ Mesa</button>
+                <button class="btn btn-sm btn-warning">+ Zona</button>
+                <button class="btn btn-sm btn-warning">* Parametros</button>
+            </div>
+            <div class="col-md-12 ">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-responsive table-bordered  table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ZONA</th>
+                            <th>NRO MESA</th>
+                            <th>MESA</th>
+                            <th>PER</th>
+                            <th>FECHA</th>
+                            <th>HORA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="mostrar">
+                            <td colspan="7" class="text-center"><span class="bg-danger p-1">Presione buscar</span></td>
+                        </tr>
+
+                        <tr *ngFor="let f of listaReserva;let i=index;let last =last">
+                            <td class="text-center">{{f.ReservaId}}</td>
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{f.Personas}}</td>
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-center">{{i+1}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
         </div>
+
+
+
     </div>
-    
-
-
-</div>
-    
-
     <app-footer></app-footer>
 </div>

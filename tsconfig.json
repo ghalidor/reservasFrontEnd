@@ -8,6 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "strict": false,
+    "skipLibCheck": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

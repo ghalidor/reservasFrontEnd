@@ -25,3 +25,13 @@ export class zonasLista {
     EmpresaId: number;
     Servidor: boolean;
 }
+
+export class Reserva {
+    ReservaId: number;
+    Personas: number;
+    Fecha: string;
+    Hora: string;
+    ZonaId: number;
+    Nrodocumento: string;
+    Nombre:string;
+}

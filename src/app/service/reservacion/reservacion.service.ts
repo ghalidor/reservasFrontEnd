@@ -20,4 +20,10 @@ export class ReservacionService {
     const url = `${this.apiUrl}Reservas/ListarReservaHorasZonaMesaLibre/${fecha}`;
     return this.httpclient.get(url);
   }
+
+  GetReservas(fechaini: string,fechafin: string): Observable<any> {
+    const url = `${this.apiUrl}Reservas/ListarReservas/${fechaini}/${fechafin}`;
+    return this.httpclient.get(url);
+  }
+
 }
