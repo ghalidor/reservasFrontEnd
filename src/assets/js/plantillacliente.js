@@ -63,19 +63,19 @@ $(window).on("load", function() {
 
     // main animation all element
     function page() {
-        $([allelement]).each(function(index, foundElements) {
-            foundElements.each(function(element) {
-                var $this = $(this);
-                var time = $(this).attr('data-time');
-                setTimeout(function() {
-                    $this.addClass('intro');
-                }, time);
-            });
-            setTimeout(function() {
-                holdside.hide();
-            }, 2500);
-            $('.opening').hide();
-        });
+        // $([allelement]).each(function(index, foundElements) {
+        //     foundElements.each(function(element) {
+        //         var $this = $(this);
+        //         var time = $(this).attr('data-time');
+        //         setTimeout(function() {
+        //             $this.addClass('intro');
+        //         }, time);
+        //     });
+        //     setTimeout(function() {
+        //         holdside.hide();
+        //     }, 2500);
+        //     $('.opening').hide();
+        // });
 
 
     } // end function

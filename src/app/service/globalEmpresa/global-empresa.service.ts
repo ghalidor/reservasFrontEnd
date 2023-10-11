@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalEmpresaService {
 
-  constructor() { }
+  constructor(public jwtHelper: JwtHelperService) { }
 
   public empresaObjeto = new BehaviorSubject<any>({
     Empresa_id: 1,
@@ -18,4 +18,11 @@ export class GlobalEmpresaService {
     Telefono: "51-2547865",
     Personas: 6
   });
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
+  }
 }

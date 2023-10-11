@@ -9,3 +9,8 @@ export class Empresa {
     Personas: number;
     
 }
+
+export class EmpresaAcceso {
+    Usuario: string;
+    Password: string;
+}

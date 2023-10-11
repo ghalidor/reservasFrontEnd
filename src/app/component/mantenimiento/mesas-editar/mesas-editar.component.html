@@ -1,0 +1,86 @@
+<section aria-label="section-reservation">
+    <div id="reservation" class="reser gray-popup-block">
+        <button type="button" style="background: transparent;color: #fff;border: none;position: absolute;top: 6px;right: 13px;font-size: 20px;" class="close btn-sm" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><i
+            class="fa fa-close"></i></button>
+        <div class="devider-doted">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="latin-font color" style="margin-top: 1px;">Registro Mesa {{mesanombre}}</h3>
+                    <div class="devider-black"></div>
+                </div>
+                <div class="col-md-12 text-left">
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <div id="msform">
+
+                                <!-- fieldsets -->
+                                <fieldset id="field_personas">
+                                    <div class="col-md-12 " style="text-align: left;">
+                                        <form autocomplete="off" [autocomplete]="false" [formGroup]="onCreateForm">
+
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group ">
+                                                        <label class=" text-left">Nombre </label>
+                                                        <input type="text" [(ngModel)]="mesas.Descripcion" formControlName="Descripcion" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group  tre">
+                                                        <label>Zona</label>
+                                                        <ng-select class="" [(ngModel)]="mesas.ZonaId" formControlName="ZonaId" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
+                                                            <ng-option [value]="">SELECCIONE</ng-option>
+                                                            <ng-option *ngFor="let e of listaZonas" [value]="e.ZonaId">
+                                                                {{e.Descripcion}}</ng-option>
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group ">
+                                                        <label>Nro. Mesa</label>
+                                                        <input type="text" [(ngModel)]="mesas.NumeroMesa" formControlName="NumeroMesa" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group ">
+                                                        <label>Cantidad Per.</label>
+                                                        <input type="text" [(ngModel)]="mesas.Pax" formControlName="Pax" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group  tre">
+                                                        <label>Para Reservar</label>
+                                                        <ng-select class="" [(ngModel)]="mesas.ParaReservar" formControlName="ParaReservar" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
+                                                            <ng-option [value]="">SELECCIONE</ng-option>
+                                                            <ng-option [value]="true">SI</ng-option>
+                                                            <ng-option [value]="false">NO</ng-option>
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </form>
+
+                                    </div>
+                                    <button type="button" (click)="guardar()" class="btn-content float-end">Guardar <i class="fa fa-save" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
+
+                                </fieldset>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

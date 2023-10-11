@@ -1,7 +1,7 @@
 <section aria-label="section-gallery">
 
     <!-- toggle gallery -->
-    <div class="nav-bottom noselect">
+    <div class="nav-bottom noselect intro">
         <div id="opengal">
             <i class="fa fa-angle-up"></i>
             <span>Galeria Platos</span>
@@ -10,7 +10,7 @@
     <!-- toggle gallery end -->
 
     <!-- gallery -->
-    <div class="bottom-option noselect">
+    <div class="bottom-option noselect intro">
 
         <!-- close gallery -->
         <div class="nav-bottom-close">
@@ -25,13 +25,13 @@
             <div class="item">
                 <div class="port big-img">
                     <div class="hovereffect">
-                        <a href="../../../../../assets/img/portofolio/2.jpg">
-                            <img class="gray-color" src="../../../../../assets/img/portofolio/1.jpg" alt="imageportofolio" />
+                        <a href="{{images[0]}}">
+                            <img class="gray-color" [src]="images[0]" alt="imageportofolio" />
                             <div class="overlay">
                                 <div class="wrap-overlay">
                                     <h2>SPECIAL FRESTO</h2>
                                     <div class="devider-yellow"></div>
-                                    <span class="price">$60</span>
+
                                 </div>
 
                             </div>
@@ -44,13 +44,13 @@
             <div class="item">
                 <div class="port big-img">
                     <div class="hovereffect">
-                        <a href="../../../../../assets/img/portofolio/2.jpg">
-                            <img class="gray-color" src="../../../../../assets/img/portofolio/2.jpg" alt="imageportofolio" />
+                        <a href="{{images[1]}}">
+                            <img class="gray-color" [src]="images[1]" alt="imageportofolio" />
                             <div class="overlay">
                                 <div class="wrap-overlay">
                                     <h2>SPECIAL FRESTO</h2>
                                     <div class="devider-yellow"></div>
-                                    <span class="price">$80</span>
+
                                 </div>
 
                             </div>
@@ -63,13 +63,13 @@
             <div class="item">
                 <div class="port big-img">
                     <div class="hovereffect">
-                        <a href="../../../../../assets/img/portofolio/3.jpg">
-                            <img class="gray-color" src="../../../../../assets/img/portofolio/3.jpg" alt="imageportofolio" />
+                        <a href="{{images[2]}}">
+                            <img class="gray-color" [src]="images[2]" alt="imageportofolio" />
                             <div class="overlay">
                                 <div class="wrap-overlay">
                                     <h2>SPECIAL FRESTO</h2>
                                     <div class="devider-yellow"></div>
-                                    <span class="price">$110</span>
+
                                 </div>
 
                             </div>
@@ -81,13 +81,13 @@
             <div class="item">
                 <div class="port big-img">
                     <div class="hovereffect">
-                        <a href="../../../../../assets/img/portofolio/4.jpg">
-                            <img class="gray-color" src="../../../../../assets/img/portofolio/4.jpg" alt="imageportofolio" />
+                        <a href="{{images[3]}}">
+                            <img class="gray-color" [src]="images[3]" alt="imageportofolio" />
                             <div class="overlay">
                                 <div class="wrap-overlay">
                                     <h2>SPECIAL FRESRTO</h2>
                                     <div class="devider-yellow"></div>
-                                    <span class="price">$120</span>
+
                                 </div>
 
                             </div>
@@ -99,13 +99,13 @@
             <div class="item">
                 <div class="port big-img">
                     <div class="hovereffect">
-                        <a href="../../../../../assets/img/portofolio/5.jpg">
-                            <img class="gray-color" src="../../../../../assets/img/portofolio/5.jpg" alt="imageportofolio" />
+                        <a href="{{images[4]}}">
+                            <img class="gray-color" [src]="images[4]" alt="imageportofolio" />
                             <div class="overlay">
                                 <div class="wrap-overlay">
                                     <h2>SPECIAL FRESTO</h2>
                                     <div class="devider-yellow"></div>
-                                    <span class="price">$99</span>
+
                                 </div>
 
                             </div>
@@ -117,13 +117,13 @@
             <div class="item">
                 <div class="port big-img">
                     <div class="hovereffect">
-                        <a href="../../../../../assets/img/portofolio/6.jpg">
-                            <img class="gray-color" src="../../../../../assets/img/portofolio/6.jpg" alt="imageportofolio" />
+                        <a href="{{images[5]}}">
+                            <img class="gray-color" [src]="images[5]" alt="imageportofolio" />
                             <div class="overlay">
                                 <div class="wrap-overlay">
                                     <h2>SPECIAL FRESTO</h2>
                                     <div class="devider-yellow"></div>
-                                    <span class="price">$115</span>
+
                                 </div>
 
                             </div>
@@ -135,15 +135,18 @@
             <div class="item">
                 <div class="port">
                     <div class="hovereffect">
-                        <img class="gray-color" src="../../../../../assets/img/portofolio/7.jpg" alt="imageportofolio" />
-                        <div class="overlay">
-                            <div class="wrap-overlay">
-                                <h2>SPECIAL FRESTO</h2>
-                                <div class="devider-yellow"></div>
-                                <span class="price">$110</span>
-                            </div>
+                        <a href="{{images[6]}}">
+                            <img class="gray-color" [src]="images[6]" alt="imageportofolio" />
+                            <div class="overlay">
+                                <div class="wrap-overlay">
+                                    <h2>SPECIAL FRESTO</h2>
+                                    <div class="devider-yellow"></div>
 
-                        </div>
+                                </div>
+
+                            </div>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -151,15 +154,18 @@
             <div class="item">
                 <div class="port">
                     <div class="hovereffect">
-                        <img class="gray-color" src="../../../../../assets/img/portofolio/8.jpg" alt="imageportofolio" />
-                        <div class="overlay">
-                            <div class="wrap-overlay">
-                                <h2>SPECIAL FRESTO</h2>
-                                <div class="devider-yellow"></div>
-                                <span class="price">$50</span>
-                            </div>
+                        <a href="{{images[7]}}">
+                            <img class="gray-color" [src]="images[7]" alt="imageportofolio" />
+                            <div class="overlay">
+                                <div class="wrap-overlay">
+                                    <h2>SPECIAL FRESTO</h2>
+                                    <div class="devider-yellow"></div>
 
-                        </div>
+                                </div>
+
+                            </div>
+                        </a>
+
                     </div>
                 </div>
             </div>

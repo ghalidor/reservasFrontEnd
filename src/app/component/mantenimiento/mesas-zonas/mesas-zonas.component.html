@@ -1,1 +1,61 @@
-<p>mesas-zonas works!</p>
+<section aria-label="section-reservation">
+    <div id="reservation" class="reser gray-popup-block">
+        <button type="button" style="background: transparent;color: #fff;border: none;position: absolute;top: 6px;right: 13px;font-size: 20px;" class="close btn-sm" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><i
+            class="fa fa-close"></i></button>
+        <div class="devider-doted">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="latin-font color" style="margin-top: 1px;">Registro Zonas</h3>
+                    <div class="devider-black"></div>
+                    <button (click)="zonaCrear()" class="btn-content float-end" style="margin-left: 16px; display: inline;">Nuevo Zona <i class="fa fa-file" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
+                    <button (click)="zonaEditar()" class="btn-content float-end" style="display: inline;">Editar Zona <i class="fa fa-file" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
+                </div>
+                <div id="reservation" class="col-md-12 text-center">
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <div id="msform">
+                                <!-- progressbar -->
+                                <ul id="progressbar">
+                                    <li style="cursor: pointer;" *ngFor="let f of listaZonas;let i=index;let last =last" [ngClass]="i===0?'active':''" (click)="zonaSeleccion(f.ZonaId,f.Descripcion)" class="circulo" id="zona{{f.ZonaId}}">
+                                        <strong>{{f.Descripcion}}</strong>
+
+                                    </li>
+
+                                </ul>
+                                <!-- fieldsets -->
+                                <fieldset id="field_personas">
+                                    <div class="col-md-12">
+                                        <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">
+                                            Lista Mesas</h2>
+
+                                        <div id="listaCantidad" class="people">
+                                            <div class="person horas" *ngFor="let f of listaMesas;let i=index;let last =last">
+                                                <span class="badge bg-primary  rounded-pill " style="float: left;margin-top: -7px;font-family: sans-serif;">Pax : {{f.Pax}}</span>
+                                                <span [ngClass]="f.ParaReservar?'bg-success':'bg-danger'" class="badge   rounded-circle" style="float: right;margin-top: -7px;"><i [ngClass]="f.ParaReservar?'fa-check':'fa-ban'" class="fa "></i></span>
+                                                <a (click)="mesaEditar(zonaid,f.MesaId,f.Descripcion)" title="Para Reservar {{f.ParaReservar?'SI':'NO'}}" id="ca1" href="javascript:void(0);" class="cantPersona person-link">{{f.Descripcion}}</a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- <input id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad" type="text"> -->
+                                        <!-- <h5>Bebés y niños deben ser incluidos en la cantidad de comensales</h5> -->
+                                    </div>
+                                    <button (click)="mesaEditar(zonaid,0,'')" class="btn-content float-end">Nuevo Mesa <i class="fa fa-file" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
+
+                                </fieldset>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

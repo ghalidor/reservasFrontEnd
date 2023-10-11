@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ReservacionNuevo } from 'src/app/module/reservacion';
+import { ReservacionNuevo,ReservaEstado } from 'src/app/module/reservacion';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,4 +26,9 @@ export class ReservacionService {
     return this.httpclient.get(url);
   }
 
+  UpdateReservacionEstado(reserva: ReservaEstado): Observable<any> {
+    const url = `${this.apiUrl}Reservas/UpdateReservasEstado`;
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    return this.httpclient.post<ReservaEstado>(url, reserva, { headers });
+  }
 }

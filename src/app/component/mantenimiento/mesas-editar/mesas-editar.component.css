@@ -1,0 +1,7 @@
+ng-select.ng-invalid.ng-touched .ng-select-container {
+    box-shadow: none!important;
+}
+
+#reservation ng-select {
+    margin-top: 11px!important;
+}

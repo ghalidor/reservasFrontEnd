@@ -1,0 +1,111 @@
+<section aria-label="section-reservation">
+    <div id="reservation" class="reser gray-popup-block">
+        <button type="button" style="background: transparent;color: #fff;border: none;position: absolute;top: 6px;right: 13px;font-size: 20px;" class="close btn-sm" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><i
+            class="fa fa-close"></i></button>
+        <div class="devider-doted">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="latin-font color" style="margin-top: 1px;">Configuración Parámetros</h3>
+                    <div class="devider-black"></div>
+                </div>
+                <div class="col-md-12 text-left">
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <div id="msform">
+
+                                <!-- fieldsets -->
+                                <fieldset id="field_personas">
+                                    <div class="col-md-12 " style="text-align: left;">
+                                        <form autocomplete="off" [autocomplete]="false" [formGroup]="onCreateForm">
+
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group ">
+                                                        <label class=" text-left">Nombre Empresa</label>
+                                                        <input type="text" [(ngModel)]="empresa.Nombre" formControlName="Nombre" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 mb-1">
+                                                    <div class="form-group  tre">
+                                                        <label>Dia Inicio</label>
+
+                                                        <ng-select class="" [(ngModel)]="empresa.AtencionDiaInicio" formControlName="AtencionDiaInicio" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
+                                                            <ng-option [value]="0">DOMIGO</ng-option>
+                                                            <ng-option [value]="1">LUNES</ng-option>
+                                                            <ng-option [value]="2">MARTES</ng-option>
+                                                            <ng-option [value]="3">MIERCOLES</ng-option>
+                                                            <ng-option [value]="4">JUEVES</ng-option>
+                                                            <ng-option [value]="5">VIERNES</ng-option>
+                                                            <ng-option [value]="6">SABADO</ng-option>
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 mb-1">
+                                                    <div class="form-group tre">
+                                                        <label>Dia Fin</label>
+                                                        <ng-select class="" [(ngModel)]="empresa.AtencionDiaFin" formControlName="AtencionDiaFin" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
+                                                            <ng-option [value]="0">DOMIGO</ng-option>
+                                                            <ng-option [value]="1">LUNES</ng-option>
+                                                            <ng-option [value]="2">MARTES</ng-option>
+                                                            <ng-option [value]="3">MIERCOLES</ng-option>
+                                                            <ng-option [value]="4">JUEVES</ng-option>
+                                                            <ng-option [value]="5">VIERNES</ng-option>
+                                                            <ng-option [value]="6">SABADO</ng-option>
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group ">
+                                                        <label>Hora Inicio (HH:mm AM/PM)</label>
+                                                        <input type="text" [(ngModel)]="empresa.AtencionHoraInicio" formControlName="AtencionHoraInicio" class="form-control" placeholder="">
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group ">
+                                                        <label>Hora Fin</label>
+                                                        <input type="text" [(ngModel)]="empresa.AtencionHoraFin" formControlName="AtencionHoraFin" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group ">
+                                                        <label>Telefono</label>
+                                                        <input type="text" [(ngModel)]="empresa.Telefono" formControlName="Telefono" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="form-group ">
+                                                        <label>Max. Per. Reservacion</label>
+                                                        <input type="text" [(ngModel)]="empresa.Personas" formControlName="Personas" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <button type="button" (click)="guardar()" class="btn-content float-end">Guardar <i class="fa fa-save" style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
+
+                                </fieldset>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

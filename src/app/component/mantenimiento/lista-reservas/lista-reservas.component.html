@@ -1,14 +1,22 @@
 <div id="wraperfastresto" class="intro">
-    <ngx-spinner></ngx-spinner>
+    <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+    <div class="filtrobuscarsticky_">
+
+    </div>
+    <div id="logo" class="brand-fastresto noselect animfadeInLeft intro" data-time="0">
+        <a href="#" style="font-size: 14px;">
+            <span class="">Reservas</span> <span class="text-warning"> Gestor</span>
+        </a>
+    </div>
     <header>
         <div id="main-menu" class="menu-init intro">
             <!-- mainmenu start -->
             <nav>
                 <ul>
 
-                    <li class="animfadeInRight intro" data-time="1400"><a class="intro" href="javascript:void(0);"
-                            [routerLink]="['/inicio']">Inicio</a>
-                    </li>
+                    <li class="animfadeInRight intro" data-time="1400"><a class="intro" href="javascript:void(0);" [routerLink]="['/inicio']">Reservaciones Cliente</a>
+                        <li class="animfadeInRight intro" data-time="1400"><a class="intro" (click)="cerrarsesion()" href="javascript:void(0);">Cerrar Sesion</a>
+                        </li>
                 </ul>
             </nav>
             <!-- mainmenu end -->
@@ -26,28 +34,28 @@
             <div class="picsum-img-wrapper">
                 <img [src]="images[0]" alt="Random first slide" style="width: 100%; height: 100vh" />
             </div>
-            <div class="carousel-caption">
+            <!-- <div class="carousel-caption">
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </div>
+            </div> -->
         </ng-template>
         <ng-template ngbSlide>
             <div class="picsum-img-wrapper">
                 <img [src]="images[1]" alt="Random second slide" style="width: 100%; height: 100vh" />
             </div>
-            <div class="carousel-caption">
+            <!-- <div class="carousel-caption">
                 <h3>Second slide label</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
+            </div> -->
         </ng-template>
         <ng-template ngbSlide>
             <div class="picsum-img-wrapper">
                 <img [src]="images[2]" alt="Random third slide" style="width: 100%; height: 100vh" />
             </div>
-            <div class="carousel-caption">
+            <!-- <div class="carousel-caption">
                 <h3>Third slide label</h3>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
+            </div> -->
         </ng-template>
     </ngb-carousel>
     <div id="logo" class="brand-fastresto noselect animfadeInLeft" data-time="0">
@@ -55,92 +63,231 @@
             <span class="">Reservas</span> <span class="text-warning"> </span>
         </a>
     </div>
-    <div class="col-md-12"
-        style="position: fixed;top: 75px;width: 100%;height: auto;z-index: 999;margin: auto;padding: 32px;">
+    <div class="col-md-12 reservas" style="position: absolute;top: 40px;width: 100%;height: auto;z-index: 5;margin: auto;padding: 32px;">
 
-        <div class="row">
-            <div class="col-lg-4 col-md-3">
+        <div class="row filtrobuscarsticky">
+            <div class="col-lg-4 col-md-3 col-sm-6 mb-1">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Fecha</span>
+                        <div class="input-group-prepend ">
+                            <span class="input-group-text bg-warning" style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;">Fecha</span>
                         </div>
-                        <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechaini" class="form-control"
-                            [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }"
-                            bsDatepicker>
+                        <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechaini" class="form-control" [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }" bsDatepicker>
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="material-icons icon">date_range</i></span>
+                            <span class="input-group-text bg-warning" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;height: 38px;"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="col-lg-4 col-md-3">
+            <div class="col-lg-4 col-md-3  col-sm-6 mb-1">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Hasta</span>
+                            <span class="input-group-text bg-warning" style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;">Hasta</span>
                         </div>
-                        <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechafin" class="form-control"
-                            [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }"
-                            bsDatepicker>
+                        <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechafin" class="form-control" [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }" bsDatepicker>
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="material-icons icon">date_range</i></span>
+                            <span class="input-group-text bg-warning" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;height: 38px;"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="col-lg-4 col-md-3">
+            <div class="col-lg-4 col-md-3  col-sm-3">
                 <div class="form-group">
-                    <button class="btn btn-primary btn-ms" (click)="buscar()"><i class="fa fa-search"></i>BUSCAR</button>
+                    <button class="btn btn-primary btn-ms" (click)="buscar()"><i class="fa fa-search"></i> BUSCAR</button>
 
                 </div>
             </div>
+
         </div>
 
-        <div class="row">
-            <div class="col-md-12 mb-4 " style="text-align: right;">
-                <button class="btn btn-sm btn-warning">+ Mesa</button>
-                <button class="btn btn-sm btn-warning">+ Zona</button>
-                <button class="btn btn-sm btn-warning">* Parametros</button>
+        <div class="row contable">
+            <div class="col-md-12 mb-2 " style="text-align: right;">
+                <button class="btn btn-sm btn-warning" (click)="ZonasMesas()">+ Zonas/Mesas</button>
+                <button class="btn btn-sm btn-warning" (click)="Parametros()">* Parametros</button>
             </div>
             <div class="col-md-12 ">
-                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-responsive table-bordered  table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>ZONA</th>
-                            <th>NRO MESA</th>
-                            <th>MESA</th>
-                            <th>PER</th>
-                            <th>FECHA</th>
-                            <th>HORA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngIf="mostrar">
-                            <td colspan="7" class="text-center"><span class="bg-danger p-1">Presione buscar</span></td>
-                        </tr>
+                <div class="row mb-5 ">
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped table-hover" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ZONA</th>
+                                <th>NRO MESA</th>
+                                <th>MESA</th>
+                                <th>PER</th>
+                                <th>FECHA</th>
+                                <th>TELEFONO</th>
+                                <th>CONDICION</th>
+                                <th>ESTADO</th>
+                                <th>ACCION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr *ngIf="mostrar">
+                                <td colspan="7" class="text-center"><span class="bg-danger p-1">Presione buscar</span></td>
+                            </tr> -->
 
-                        <tr *ngFor="let f of listaReserva;let i=index;let last =last">
-                            <td class="text-center">{{f.ReservaId}}</td>
-                            <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{f.Personas}}</td>
-                            <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{i+1}}</td>
-                            <td class="text-center">{{i+1}}</td>
-                        </tr>
+                            <tr *ngFor="let f of listaReserva;let i=index;let last =last">
+                                <td class="text-center {{f.ClaseEstado}}">{{f.ReservaId}}</td>
+                                <td class="text-left {{f.ClaseEstado}}">{{f.Zona}}</td>
+                                <td class="text-center {{f.ClaseEstado}}">{{f.NroMesa}}</td>
+                                <td class="text-left {{f.ClaseEstado}}">{{f.Mesa}}</td>
+                                <td class="text-center {{f.ClaseEstado}}">{{f.Personas}}</td>
+                                <td class="text-left {{f.ClaseEstado}}">{{f.Fecha}}</td>
+                                <td class="text-left {{f.ClaseEstado}}">{{f.Telefono}}</td>
+                                <td class="text-left {{f.ClaseEstado}}"><span class="badge rounded-pill {{f.ClaseEstado}}">{{f.ClaseEstado}}</span></td>
+                                <td class="text-left ">{{f.Estado}}</td>
+                                <td class="text-left ">
+                                    <button class="btn btn-sm btn-primary" (click)="cambiarestado(f)"> ...</button>
+                                    <button class="btn btn-sm btn-warning" style="margin-left:4px" (click)="detalleReserva(f)"><i
+                      class="fa fa-whatsapp"></i> </button></td>
+                            </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+
 
             </div>
         </div>
-
-
-
     </div>
-    <app-footer></app-footer>
+
+    <ng-template class="" #modalConfirmacion let-modal>
+        <div class="">
+            <section aria-label="section-reservation">
+                <div id="" class="reser gray-popup-block">
+                    <button type="button" style="background: transparent;color: #fff;border: none;position: absolute;top: 6px;right: 13px;font-size: 20px;" class="close btn-sm" aria-label="Close" (click)="modal.dismiss('Cross click')"><i
+              class="fa fa-close"></i></button>
+                    <div class="devider-doted">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="latin-font color" style="margin-top: 1px;font-size: 28px;">Cambio Estado Reservacion</h3>
+                                <div class="devider-black"></div>
+                            </div>
+                            <div class="col-md-12 ">
+                                <div class="row">
+                                    <div class="col-md-12 mx-0">
+                                        <div id="msform">
+
+                                            <fieldset id="field_confirm">
+                                                <div class="row mb-4">
+                                                    <div class="col-md-12 text-center">
+                                                        <p>¿Está Seguro?</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-md-12">
+                                                        <textarea cols="50" id="motivo" name="motivo" autocomplete="off" [(ngModel)]="motivo" class="clasetext form-control" placeholder="Motivo(*)" rows="4"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-4">
+                                                    <div class="col-md-12" style="text-align: left !important;">
+                                                        <ng-select class="" placeholder="-SELECCIONE-" [(ngModel)]="estado_id" [clearable]="true" [searchable]="false" [multiple]="false">
+                                                            <ng-option [value]="0">NO VINO</ng-option>
+                                                            <ng-option [value]="2">CANCELADO </ng-option>
+                                                            <ng-option [value]="3">EN ATENCION </ng-option>
+                                                            <ng-option [value]="4">ATENDIDO </ng-option>
+                                                        </ng-select>
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn-content" style="margin:4px;width: 120px;display: inline;" (click)="ReservacionCambiarEstado()">SI <i class="fa fa-check"
+                            style="font-size: 23px;margin-top: 12px;margin-left: 4px;"></i></button>
+
+                                                <button class="btn-content" style="margin:4px;width: 120px;display: inline;" (click)="modal.dismiss('Cross click')">NO <i class="fa fa-remove"
+                            style="font-size: 23px;margin-top: 12px;margin-left: 4px;"></i></button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </ng-template>
+
+    <ng-template class="" #modalData let-modal>
+        <div class="">
+            <section aria-label="section-reservation">
+                <div id="" class="reser gray-popup-block">
+                    <button type="button" style="background: transparent;color: #fff;border: none;position: absolute;top: 6px;right: 13px;font-size: 20px;" class="close btn-sm" aria-label="Close" (click)="modal.dismiss('Cross click')"><i
+              class="fa fa-close"></i></button>
+                    <div class="devider-doted">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="latin-font color" style="margin-top: 1px;font-size: 28px;">Informacion Reserva</h3>
+                                <div class="devider-black"></div>
+                            </div>
+                            <div class="col-md-12 ">
+                                <div class="row">
+                                    <div class="col-md-12 mx-0">
+                                        <div id="msform">
+
+                                            <fieldset id="field_confirm" style="font-size: 21px;">
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 text-center">
+                                                        Cliente : {{detalleReservacion.Nombre}}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 text-center">
+                                                        Telefono : {{detalleReservacion.Telefono}}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 text-center">
+                                                        Mascotas : {{detalleReservacion.Mascotas?"SI":"NO"}}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 text-center">
+                                                        Correo : {{detalleReservacion.Correo}}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 text-center">
+                                                        Mensaje : {{detalleReservacion.Mensaje}}
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 text-center">
+                                                        Estado : {{detalleReservacion.Estado}}
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-12 text-center">
+                                                        Motivo : {{detalleReservacion.Motivo}}
+                                                    </div>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </ng-template>
 </div>

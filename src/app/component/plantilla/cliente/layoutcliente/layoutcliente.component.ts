@@ -12,10 +12,10 @@ import { ReservacionService } from 'src/app/service/reservacion/reservacion.serv
 import { ReservacionNuevo, ListaHorasZonaMesasLibre } from 'src/app/module/reservacion';
 import { Router } from '@angular/router';
 
-import { Empresa } from 'src/app/module/Empresa';
+import { Empresa,EmpresaAcceso } from 'src/app/module/Empresa';
 import { GlobalEmpresaService } from 'src/app/service/globalEmpresa/global-empresa.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-layoutcliente',
   templateUrl: './layoutcliente.component.html',
@@ -28,6 +28,18 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   fechaini: Date;
   mostrar: boolean;
   listaHoras: ListaHorasZonaMesasLibre[];
+usuario:string;
+password:string;
+empresaAcceso=new EmpresaAcceso();
+  onCreateForm = this.formBuilder.group({
+    'usuario': ['', Validators.compose([
+      Validators.required,
+    ]),],
+    'password': ['', Validators.compose([
+      Validators.required,
+    ]),],
+  });
+
   //listaHoras: string[] = ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '01:00 PM', '02:00 PM'];
   cars = [
     { id: 1, name: 'Volvo' },
@@ -39,6 +51,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   maxDate = new Date();
+  minDate = new Date();
 
   HcantP: number;
   Hfecha: string;
@@ -57,17 +70,21 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   telefono: string;
   mensaje: string;
   mascotas: boolean;
+  correo:string;
   listaZonas: zonas[];
   listaMesas: mesas[];
+
+  hayhoras:boolean;
 
   empresa = new Empresa;
   reserva = new ReservacionNuevo;
   @ViewChild('modalReserva') public templateModalmodalReserva: TemplateRef<any>;
+  @ViewChild('login') public templateModallogin: TemplateRef<any>;
   weekdays: string[] = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   tituloSemana: string;
 
   daysDisables: number[];
-  images = ['bg-2.jpg', 'bg-2.jpg', 'bg-2.jpg'].map((n) => `assets/img/${n}`);
+  images = ['bg-2.jpeg', 'bg-2.jpeg', 'bg-2.jpeg'].map((n) => `assets/img/${n}`);
   constructor(
     private modalService: NgbModal,
     private reservacionService: ReservacionService,
@@ -77,14 +94,16 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     private zonasServices: ZonasService,
     private globalEmpresaService: GlobalEmpresaService,
     private empresaService: EmpresaService,
+    private formBuilder: FormBuilder,
     private router: Router) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
     
+    this.minDate.setDate(this.minDate.getDate());
   }
 
   ngOnInit(): void {
-    
+    this.hayhoras=true;
     //this.toastr.warning("Seleccione Empresa/Sede");
     this.RegistroEmpresa();
     this.ListaZonas();
@@ -105,8 +124,10 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
     this.daysDisables = [];
     //  this.registroEmpresaGlobal();
- 
+    this.usuario="";
+    this.password="";
   
+    
   }
 
   ngAfterViewInit(): void {
@@ -116,6 +137,17 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   open(modal:TemplateRef<any>) {
     this.RegistroEmpresa();
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: "xl" }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  opensm(modal:TemplateRef<any>) {
+    this.RegistroEmpresa();
+    this.usuario="";
+    this.password="";
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: "sm" }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -143,7 +175,6 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
       case 'field_personas':
         step = this.BcantP > 0 ? true : false;
         message = "Seleccione Cantidad de Personas";
-        console.log(this.daysDisables)
         break;
       case 'field_calendar':
         if (this.BfechaAny != null) {
@@ -152,10 +183,21 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
         step = this.Bfecha != "" ? true : false;
         message = "Seleccione Fecha para la reservación";
+
+        if(!this.hayhoras){
+          step=false;
+          message = "No Hay Mesas Disponibles";
+        }
         break;
       case 'field_hora':
         step = this.Bhora != "" ? true : false;
         message = "Seleccione Hora de la reservación";
+
+        var lista = this.listaHoras.filter(z=>z.Hora==this.Bhora);
+        if(lista.length>0){
+          this.listaZonas=lista[0].ZonasLibres;
+        }
+
         break;
       case 'field_zona':
         step = this.Bzona != 0 ? true : false;
@@ -271,7 +313,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
   formulario(posicion: number) {
     console.log(this.mascotas)
-    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" && this.mensaje != "" && this.mascotas != null) {
+    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" && this.mensaje != "" && this.mascotas != null && this.correo != null) {
       this.mostrar = true;
     }
     else {
@@ -292,6 +334,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
       this.reserva.Telefono = this.telefono;
       this.reserva.Mensaje = this.mensaje;
       this.reserva.Mascotas = this.mascotas;
+      this.reserva.Correo=this.correo;
       this.reservacionService.CreateReservacion(this.reserva).subscribe({
         next: response => {
           if (response.respuesta) {
@@ -325,6 +368,9 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     this.zonasServices.listaZonas().subscribe({
       next: response => {
         this.listaZonas = response.data;
+        if(this.listaZonas.length>0){
+          this.listaZonas=this.listaZonas.filter(z=>z.EsActivo);
+        }
       },
       complete: () => {
 
@@ -352,6 +398,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   }
 
   listarHoraZonasLibres() {
+    this.spinnerService.show();
     this.reservacionService.GetReservaHoraZonamesaLibre(this.Bfecha).subscribe({
       next: response => {
         this.listaHoras = response.data.lista;
@@ -363,9 +410,10 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
         const hijos = fielzona.querySelectorAll("a");
         hijos.forEach(x => x.classList.remove("orange"));
 
+        this.hayhoras = this.listaHoras.filter(x=>x.IsActivo).length>0?true:false;
       },
       complete: () => {
-
+        this.spinnerService.hide();
       },
       error: (error) => {
         this.spinnerService.hide();
@@ -405,16 +453,19 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
         this.empresa.AtencionHoraFin = moment(fecha + " " + this.empresa.AtencionHoraFin, "YYYY-MM-DD HH:mm a").format("hh:mm a");
         this.tituloSemana = this.weekdays[this.empresa.AtencionDiaInicio] + " - " + this.weekdays[this.empresa.AtencionDiaFin];
         const permisoCantidadPersonas = document.getElementById("listaCantidad");
-        const links = permisoCantidadPersonas.querySelectorAll("a");
-        links.forEach(x => Number(x.textContent) > this.empresa.Personas && x.classList.add("bloqueo"));
-
-        for (let i = 0; i < 7; i++) {
-          if (i >= this.empresa.AtencionDiaInicio && i <= this.empresa.AtencionDiaFin) {
-          }
-          else {
-            this.daysDisables.push(i);
+        if(permisoCantidadPersonas!=null){
+          const links = permisoCantidadPersonas.querySelectorAll("a");
+          links.forEach(x => Number(x.textContent) > this.empresa.Personas && x.classList.add("bloqueo"));
+  
+          for (let i = 0; i < 7; i++) {
+            if (i >= this.empresa.AtencionDiaInicio && i <= this.empresa.AtencionDiaFin) {
+            }
+            else {
+              this.daysDisables.push(i);
+            }
           }
         }
+        
       },
       complete: () => {
         this.spinnerService.hide();
@@ -426,5 +477,37 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     })
   }
 
+  validar() {
+    if (this.onCreateForm.valid) {
+      this.spinnerService.show();
+      this.empresaAcceso.Usuario = this.usuario;
+      this.empresaAcceso.Password = this.password;
+      this.empresaService.Login(this.empresaAcceso).subscribe({
+        next: response => {
+          if (response.respuesta) {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('isLoggedIn', 'true');
+            this.toastr.success(response.message);
+            this.router.navigate(['reservas']);
+            
+
+          }
+          else {
+            this.toastr.error(response.message);
+          }
+
+        },
+        complete: () => {
+          this.spinnerService.hide();
+        },
+        error: (error) => {
+          this.spinnerService.hide();
+        }
+      })
+    }
+    else {
+      this.toastr.warning("Complete los campos Obligatorios(*)");
+    }
+  }
 
 }

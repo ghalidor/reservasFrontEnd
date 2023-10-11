@@ -25,6 +25,12 @@ import { MesasZonasComponent } from './component/mantenimiento/mesas-zonas/mesas
 
 import { DataTablesModule } from "angular-datatables";
 import { DialogmesssageComponent } from './component/dialogmesssage/dialogmesssage.component';
+import { ParametrosComponent } from './component/mantenimiento/parametros/parametros.component';
+import { MesasEditarComponent } from './component/mantenimiento/mesas-editar/mesas-editar.component';
+import { ZonasEditarComponent } from './component/mantenimiento/zonas-editar/zonas-editar.component';
+import { JwtInterceptor } from './component/_helpers/jwt_interceptor';
+import { DialogmessageService } from './service/dialogmessage.service';
+import { JwtHelperService ,JWT_OPTIONS  } from '@auth0/angular-jwt';
 //defineLocale('de', deLocale);
 
 @NgModule({
@@ -38,6 +44,9 @@ import { DialogmesssageComponent } from './component/dialogmesssage/dialogmesssa
     ListaReservasComponent,
     MesasZonasComponent,
     DialogmesssageComponent,
+    ParametrosComponent,
+    MesasEditarComponent,
+    ZonasEditarComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +67,11 @@ import { DialogmesssageComponent } from './component/dialogmesssage/dialogmesssa
     FormsModule,
     ReactiveFormsModule,
   ],
+  entryComponents: [ DialogmesssageComponent ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [AlertConfig, BsDatepickerConfig,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{ provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor, multi: true },
+    DialogmessageService,AlertConfig, BsDatepickerConfig, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },JwtHelperService,
+    {provide: LocationStrategy,useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
