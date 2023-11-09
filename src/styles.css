@@ -1,5 +1,15 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @font-face {
+    font-family: 'canete';
+    src: url(../src/assets/fonts/BOSQUE.otf);
+}
+
+@font-face {
+    font-family: 'canetelight';
+    src: url(../src/assets/fonts/Termina-Light.otf);
+}
+
+@font-face {
     font-family: 'Great Vibes';
     font-style: normal;
     font-weight: 400;
@@ -2597,7 +2607,7 @@ time,
 mark,
 audio,
 video {
-    font-family: 'Open Sans', sans-serif;
+    font-family: canetelight;
     margin: 0;
     padding: 0;
     border: 0;
@@ -2610,7 +2620,7 @@ video {
 /** general **/
 
 body {
-    font-family: serif;
+    font-family: canetelight;
     font-size: 12px;
     line-height: 1.5;
     font-style: normal;
@@ -3082,7 +3092,8 @@ button:hover {
 }
 
 .latin-font {
-    font-family: 'Great Vibes';
+    font-family: 'canete';
+    /* font-family: 'Great Vibes'; */
     margin-top: 10px;
 }
 
