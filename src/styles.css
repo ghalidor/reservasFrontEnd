@@ -2626,8 +2626,8 @@ body {
     font-style: normal;
     font-weight: normal;
     text-align: left;
-    color: #efefef;
-    background: #22252f;
+    color: #2a394c;
+    background: #eed7cd;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
@@ -2870,8 +2870,8 @@ button:hover {
     text-align: center;
     line-height: 49px;
     color: #ffffff;
-    border: 1px solid #dadada;
-    background: rgb(153 90 9 / 77%);
+    border: 1px solid #eed7cd;
+    background: rgb(42 57 76);
     border-radius: 100px;
     outline: none;
     text-shadow: none;
@@ -3289,7 +3289,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #e99d3f;
+    color: #eed7cd;
 }
 
 nav a.active {
@@ -6158,4 +6158,18 @@ input[type="text"].focus,
 
 .contable {
     margin-top: 99px;
+}
+
+.btninicio {
+    display: inline;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 14px;
+    background: #eed7cd;
+    padding: 2px;
+    border: 1px solid #ebdfd9;
+}
+
+.text-warning {
+    color: #eed7cd !important;
 }
