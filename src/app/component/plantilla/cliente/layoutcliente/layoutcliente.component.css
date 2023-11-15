@@ -46,14 +46,14 @@
 #msform textarea {
     padding: 0px 8px 4px 8px;
     border: none;
-    border-bottom: 1px solid #ccc;
+   border-bottom: 3px solid #2a394c;;
     border-radius: 0px;
     margin-bottom: 20px;
     margin-top: 2px;
     width: 100%;
     box-sizing: border-box;
     font-family: montserrat;
-    color: #dc9d3f;
+    color: #eed7cd;
     font-size: 16px;
     letter-spacing: 1px;
 }
@@ -65,7 +65,7 @@
     box-shadow: none !important;
     border: none;
     font-weight: bold;
-    border-bottom: 2px solid #dc9d3f;
+    border-bottom: 2px solid #2a394c;
     outline-width: 0;
 }
 
@@ -143,6 +143,7 @@ select.list-dt:focus {
     margin-bottom: 10px;
     font-weight: bold;
     text-align: left;
+    text-shadow: #000000ed 0px 0px 0px;
 }
 
 
@@ -155,7 +156,7 @@ select.list-dt:focus {
 }
 
 #progressbar .active {
-    color: #dc9d3f;
+    color: #2a394c;
 }
 
 #progressbar li {
@@ -204,10 +205,11 @@ select.list-dt:focus {
     display: block;
     font-size: 18px;
     color: #ffffff;
-    background: lightgray;
+    background: #293a4c87;
     border-radius: 50%;
     margin: 0 auto 10px auto;
     padding: 2px;
+    border: 1px solid #fff;
 }
 
 
@@ -229,7 +231,7 @@ select.list-dt:focus {
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #dc9d3f;
+    background: #2a394c;
 }
 
 
@@ -272,11 +274,11 @@ select.list-dt:focus {
 /* ////////////////////////////////////////////////////// */
 
 #reservation {
-    text-shadow: black 1px 1px 1px;
+   
 }
 
 #reservation button {
-    text-shadow: black 1px 1px 1px;
+    text-shadow: black 0px 0px 0px;
 }
 
 #reservation .reservation section .section-people .people {
@@ -292,7 +294,7 @@ select.list-dt:focus {
 }
 
 #reservation .people .person a {
-    font-family: PublicSans-Medium;
+    /* font-family: PublicSans-Medium; */
     color: #fff;
     font-size: 18px;
     line-height: 28px;
@@ -305,10 +307,11 @@ select.list-dt:focus {
     display: block;
     text-align: center;
     margin: 0 auto;
+    background: #29394c6b;
 }
 
 #reservation .people .person a:hover {
-    background: #dc9d3f;
+    background: #29394c;
     text-shadow: black 1px 1px 1px;
 }
 
@@ -324,12 +327,12 @@ select.list-dt:focus {
 }
 
 .orange {
-    background-color: #dc9d3f !important;
+    background-color: #2a394c !important;
 }
 
 .bloqueo {
     text-decoration: line-through !important;
-    color: #9E9E9E !important;
+    color: #3f3c3c !important;
     background: #555252;
 }
 
@@ -354,4 +357,9 @@ div.picsum-img-wrapper img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+
+.text-success{
+    color: #2b3a4d !important;
 }

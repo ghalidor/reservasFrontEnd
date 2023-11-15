@@ -10,7 +10,7 @@
             <nav>
                 <ul>
 
-                    <li class="animfadeInRight intro" data-time="1400"><a class="intro btninicio" href="javascript:void(0);" (click)="opensm(login)">Intranet</a>
+                    <li class="animfadeInRight intro" data-time="1400"><a class="intro btninicio" href="javascript:void(0);" style="margin-right: -26px;text-shadow: #000000ed 0px 0px 0px;" (click)="opensm(login)">Intranet</a>
                     </li>
                 </ul>
             </nav>
@@ -117,7 +117,7 @@
                                         <div id="msform">
                                             <!-- progressbar -->
                                             <ul id="progressbar">
-                                                <li class="active" id="personas"><strong>Personas</strong>
+                                                <li class="active" id="personas"><strong style="text-shadow: #ffffff 1px 1px 1px;">Personas</strong>
                                                     <div class="text-success">{{HcantP}}</div>
                                                 </li>
                                                 <li id="calendar"><strong>Fecha</strong>
@@ -136,7 +136,7 @@
                                             <!-- fieldsets -->
                                             <fieldset id="field_personas">
                                                 <div class="col-md-12">
-                                                    <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija la cantidad de personas</h2>
+                                                    <h2 class="fs-title fs-6 text-center" style="color: #2a394c;font-family: PublicSans-Medium;text-transform: uppercase;">Elija la cantidad de personas</h2>
 
                                                     <div id="listaCantidad" class="people">
                                                         <div class="person"><a id="ca1" href="javascript:void(0);" (click)="cantidadPersonas(1)" class="cantPersona person-link">1</a></div>
@@ -156,10 +156,10 @@
                                                     <!-- <input id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad" type="text"> -->
                                                     <!-- <h5>Bebés y niños deben ser incluidos en la cantidad de comensales</h5> -->
                                                 </div>
-                                                <button class="btn-content" (click)="avanzar('calendar')">Continuar <i class="fa fa-angle-right"
+                                                <button class="btn-content btninicio" style="background: #2a394c;" (click)="avanzar('calendar')">Continuar <i class="fa fa-angle-right"
                             style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
                                                 <div class="mt-4 col-md-12 text-start fs-6">
-                                                    <p style="font-size: 12px;color: #e99d3f;font-family: PublicSans-Medium;">* Bebés y niños deben ser incluidos en la cantidad de comensales.
+                                                    <p style="font-size: 12px;color: #2a394c;font-family: PublicSans-Medium;">* Bebés y niños deben ser incluidos en la cantidad de comensales.
                                                     </p>
                                                 </div>
                                             </fieldset>
@@ -169,11 +169,11 @@
                                                     <bs-datepicker-inline name="reserva_fecha" ngDefaultControl [(ngModel)]="BfechaAny" (bsValueChange)="onDateSelect($event)" [minDate]="minDate" [bsConfig]="{datesDisabled :[], daysDisabled:daysDisables,isAnimated: true,showWeekNumbers: false,dateInputFormat: 'DD-MM-YYYY',useUtc: false }">
                                                     </bs-datepicker-inline>
                                                 </div>
-                                                <button class="btn-content" (click)="retroceder('calendar')" style="margin:4px"><i
+                                                <button class="btn-content" (click)="retroceder('calendar')" style="margin:4px;background: #2a394c;"><i
                             class="fa fa-angle-left"
                             style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: absolute;"></i>
                           Regresar </button>
-                                                <button class="btn-content" (click)="avanzar('hora')" style="margin:4px">Continuar <i
+                                                <button class="btn-content btninicio" (click)="avanzar('hora')" style="margin:4px;background: #2a394c;">Continuar <i
                             class="fa fa-angle-right"
                             style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
 
@@ -181,36 +181,36 @@
                                             <fieldset id="field_hora">
 
                                                 <div class="col-md-12 mb-4">
-                                                    <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija una hora
+                                                    <h2 class="fs-title fs-6 text-center" style="font-family: PublicSans-Medium;text-transform: uppercase;">Elija una hora
                                                     </h2>
 
                                                     <div class="people">
                                                         <div class="person horas" *ngFor="let regHora of listaHoras,let i=index"><a href="javascript:void(0);" (click)="horaReserva(regHora.Hora,i)" class="person-link hora_{{i}}" [ngClass]="regHora.IsActivo?'':'bloqueo'">{{regHora.Hora}}</a></div>
                                                     </div>
                                                 </div>
-                                                <button class="btn-content" (click)="retroceder('hora')" style="margin:4px"><i
+                                                <button class="btn-content" (click)="retroceder('hora')" style="margin:4px;background: #2a394c;"><i
                             class="fa fa-angle-left"
                             style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: absolute;"></i>
                           Regresar </button>
-                                                <button class="btn-content" (click)="avanzar('zona')" style="margin:4px">Continuar <i
+                                                <button class="btn-content btninicio" (click)="avanzar('zona')" style="margin:4px;background: #2a394c;">Continuar <i
                             class="fa fa-angle-right"
                             style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
 
                                             </fieldset>
                                             <fieldset id="field_zona">
                                                 <div class="col-md-12 mb-4">
-                                                    <h2 class="fs-title fs-6 text-center" style="color: #e99d3f;font-family: PublicSans-Medium;text-transform: uppercase;">Elija una Zona
+                                                    <h2 class="fs-title fs-6 text-center" style="font-family: PublicSans-Medium;text-transform: uppercase;">Elija una Zona
                                                     </h2>
 
                                                     <div class="people">
                                                         <div class="person zonas" *ngFor="let regZona of listaZonas"><a href="javascript:void(0);" (click)="zonaReserva(regZona.ZonaId,regZona.EsActivo)" id="zona_{{regZona.ZonaId}}" class="person-link {{regZona.EsActivo?'':'bloqueo'}}">{{regZona.Descripcion}}</a></div>
                                                     </div>
                                                 </div>
-                                                <button class="btn-content" (click)="retroceder('zona')" style="margin:4px"><i
+                                                <button class="btn-content btninicio" (click)="retroceder('zona')" style="margin:4px;background: #2a394c;"><i
                             class="fa fa-angle-left"
                             style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: absolute;"></i>
                           Regresar </button>
-                                                <button class="btn-content" (click)="avanzar('confirm')" style="margin:4px">Continuar <i
+                                                <button class="btn-content btninicio" (click)="avanzar('confirm')" style="margin:4px;background: #2a394c;">Continuar <i
                             class="fa fa-angle-right"
                             style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
 
@@ -241,11 +241,11 @@
                                                         </ng-select>
                                                     </div>
                                                 </div>
-                                                <button class="btn-content" (click)="retroceder('confirm')" style="margin:4px"><i
+                                                <button class="btn-content btninicio" (click)="retroceder('confirm')" style="margin:4px;background: #2a394c;"><i
                             class="fa fa-angle-left"
                             style="font-size: 23px;margin-top: 12px;margin-left: -14px;position: absolute;"></i>
                           Regresar </button>
-                                                <button class="btn-content" (click)="registrarReserva()" style="margin:4px">REGISTRE <i
+                                                <button class="btn-content btninicio" (click)="registrarReserva()" style="margin:4px;background: #2a394c;">REGISTRE <i
                             class="fa fa-check"
                             style="font-size: 23px;margin-top: 12px;margin-left: 4px;position: absolute;"></i></button>
 
@@ -307,7 +307,7 @@
                                                 </form>
 
                                             </div>
-                                            <button type="button" (click)="validar()" style="width: 168px;" class="btn-content float-end">ACCEDER <i class="fa fa-save"
+                                            <button type="button" (click)="validar()" style="width: 168px;" class="btn-content btninicio float-end">ACCEDER <i class="fa fa-save"
                           style="font-size: 23px;margin-top: 12px;margin-left: 4px;"></i></button>
 
                                         </fieldset>
