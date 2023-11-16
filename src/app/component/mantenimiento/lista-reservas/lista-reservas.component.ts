@@ -71,7 +71,7 @@ export class ListaReservasComponent implements OnInit, OnDestroy {
       scrollCollapse: false,
       order: [],
       "columnDefs": [{
-        "targets": 8,
+        "targets": 6,
         "orderable": false
       }],
     };
@@ -101,7 +101,7 @@ export class ListaReservasComponent implements OnInit, OnDestroy {
     this.mostrar = false;
     var fechaini = moment(this.fechaini, "DD-MM-YYYY").format("YYYY-MM-DD");
     var fechafin = moment(this.fechafin, "DD-MM-YYYY").format("YYYY-MM-DD");
-    this.reservacionService.GetReservas(fechaini, fechafin).subscribe({
+    this.reservacionService.GetReservasSinZona(fechaini, fechafin).subscribe({
       next: response => {
 
         this.listaReserva = response.data;

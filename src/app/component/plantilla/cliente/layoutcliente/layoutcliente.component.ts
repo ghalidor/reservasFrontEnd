@@ -106,7 +106,7 @@ empresaAcceso=new EmpresaAcceso();
     this.hayhoras=true;
     //this.toastr.warning("Seleccione Empresa/Sede");
     this.RegistroEmpresa();
-    this.ListaZonas();
+    //this.ListaZonas();
     this.tituloSemana = "";
     this.mostrar = false;
     this.BcantP = 0;
@@ -177,17 +177,7 @@ empresaAcceso=new EmpresaAcceso();
         message = "Seleccione Cantidad de Personas";
         break;
       case 'field_calendar':
-        if (this.BfechaAny != null) {
-          this.Bfecha = moment(this.BfechaAny, "DD-MM-YYYY").format("YYYY-MM-DD");
-        }
-
-        step = this.Bfecha != "" ? true : false;
-        message = "Seleccione Fecha para la reservación";
-
-        if(!this.hayhoras){
-          step=false;
-          message = "No Hay Mesas Disponibles";
-        }
+        step=true;
         break;
       case 'field_hora':
         step = this.Bhora != "" ? true : false;
@@ -199,10 +189,7 @@ empresaAcceso=new EmpresaAcceso();
         }
 
         break;
-      case 'field_zona':
-        step = this.Bzona != 0 ? true : false;
-        message = "Seleccione Zona para la reservación";
-        break;
+     
       case 'field_confirm':
         message = "Complete los campos obligatorios";
         step = this.Bzona != 0 ? true : false;
@@ -335,7 +322,7 @@ empresaAcceso=new EmpresaAcceso();
       this.reserva.Mensaje = this.mensaje;
       this.reserva.Mascotas = this.mascotas;
       this.reserva.Correo=this.correo;
-      this.reservacionService.CreateReservacion(this.reserva).subscribe({
+      this.reservacionService.CreateReservacionSinZona(this.reserva).subscribe({
         next: response => {
           if (response.respuesta) {
             this.toastr.success(response.message);
@@ -399,7 +386,7 @@ empresaAcceso=new EmpresaAcceso();
 
   listarHoraZonasLibres() {
     this.spinnerService.show();
-    this.reservacionService.GetReservaHoraZonamesaLibre(this.Bfecha).subscribe({
+    this.reservacionService.GetReservaHora().subscribe({
       next: response => {
         this.listaHoras = response.data.lista;
         this.Hzona = null;

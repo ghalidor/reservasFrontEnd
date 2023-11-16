@@ -5606,19 +5606,19 @@ address span a {
 }
 
 .ng-select .ng-select-container {
-    background-color: #040e40;
+    background-color: #2a394c;
     margin-top: -7px;
     color: #fff;
     min-height: 38px;
 }
 
 .ng-select.ng-select-opened>.ng-select-container {
-    background: #040e40;
+    background: #2a394c;
     border-color: #b3b3b3 #ccc #d9d9d9;
 }
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-    background-color: #040e40;
+    background-color: #2a394c;
     color: #fff;
 }
 
@@ -5644,7 +5644,7 @@ address span a {
 }
 
 .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
-    top: 8px;
+    /* top: 8px; */
 }
 
 
@@ -5675,7 +5675,7 @@ ng-select.ng-invalid .ng-select-container {
 #reservation .ng-select.ng-select-opened>.ng-select-container {
     background: #56555c !important;
     border: 0px !important;
-    padding-top: 14px;
+    padding-top: 12px;
 }
 
 #reservation .custom-select input[type="text"] {
@@ -6093,7 +6093,7 @@ input[type="text"].focus,
 #reservation .ng-select .ng-select-container {
     margin-top: 1px !important;
     min-height: 38px !important;
-    padding-top: 15px;
+    padding-top: 12px;
     border-bottom: none;
 }
 

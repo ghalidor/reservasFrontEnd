@@ -10,6 +10,19 @@ export class ReservacionNuevo {
     Mascotas: boolean;
     Correo: string;
 }
+
+export class ReservacionNuevoSinZona {
+    Personas: number;
+    Fecha: String;
+    Hora: string;
+    Nrodocumento: string;
+    Nombre: string;
+    Telefono: string;
+    Mensaje: string;
+    Mascotas: boolean;
+    Correo: string;
+}
+
 export class ReservaEstado {
     ReservaId: number;
     Estado:number;
