@@ -46,13 +46,14 @@
 #msform textarea {
     padding: 0px 8px 4px 8px;
     border: none;
-   border-bottom: 3px solid #2a394c;;
+    border-bottom: 3px solid #2a394c;
+    ;
     border-radius: 0px;
     margin-bottom: 20px;
     margin-top: 2px;
     width: 100%;
     box-sizing: border-box;
-    font-family: montserrat;
+    font-family: canete;
     color: #eed7cd;
     font-size: 16px;
     letter-spacing: 1px;
@@ -273,9 +274,7 @@ select.list-dt:focus {
 
 /* ////////////////////////////////////////////////////// */
 
-#reservation {
-   
-}
+#reservation {}
 
 #reservation button {
     text-shadow: black 0px 0px 0px;
@@ -359,7 +358,10 @@ div.picsum-img-wrapper img {
     background-repeat: no-repeat;
 }
 
-
-.text-success{
+.text-success {
     color: #2b3a4d !important;
+}
+
+.bs-datepicker-head button.current {
+    background: #2a394c94;
 }
