@@ -1,10 +1,11 @@
-<div id="wraperfastresto" class="intro">
+
+<div id="wraperfastresto" class="intro bodycolor">
     <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
     <div class="filtrobuscarsticky_">
 
     </div>
     <div id="logo" class="brand-fastresto noselect animfadeInLeft intro" data-time="0">
-        <a href="#" style="font-size: 14px;">
+        <a href="javascript:void(0);" style="font-size: 14px;" class="btnnuevo">
             <span class="">Reservas</span> <span class="text-warning"> Gestor</span>
         </a>
     </div>
@@ -14,8 +15,8 @@
             <nav>
                 <ul>
 
-                    <li class="animfadeInRight intro" data-time="1400"><a class="intro" href="javascript:void(0);" [routerLink]="['/inicio']">Reservaciones Cliente</a>
-                        <li class="animfadeInRight intro" data-time="1400"><a class="intro" (click)="cerrarsesion()" href="javascript:void(0);">Cerrar Sesion</a>
+                    <li class="animfadeInRight intro" data-time="1400"><a class="intro btnnuevo" href="javascript:void(0);" [routerLink]="['/inicio']">Reservaciones Cliente</a>
+                        <li class="animfadeInRight intro" data-time="1400"><a class="intro btnnuevo" (click)="cerrarsesion()" href="javascript:void(0);">Cerrar Sesion</a>
                         </li>
                 </ul>
             </nav>
@@ -59,7 +60,7 @@
         </ng-template>
     </ngb-carousel>
     <div id="logo" class="brand-fastresto noselect animfadeInLeft" data-time="0">
-        <a href="#" style="font-size: 14px;">
+        <a href="javascript:void(0);" style="font-size: 14px;">
             <span class="">Reservas</span> <span class="text-warning"> </span>
         </a>
     </div>
@@ -70,11 +71,11 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend ">
-                            <span class="input-group-text bg-warning" style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;">Fecha</span>
+                            <span class="input-group-text bg-warning" style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;background-color: #eed7cd !important;">Fecha</span>
                         </div>
                         <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechaini" class="form-control" [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }" bsDatepicker>
                         <div class="input-group-append">
-                            <span class="input-group-text bg-warning" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;height: 38px;"><i class="fa fa-calendar"></i></span>
+                            <span class="input-group-text bg-warning" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;height: 38px;background-color: #eed7cd !important;"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
 
@@ -84,11 +85,11 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text bg-warning" style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;">Hasta</span>
+                            <span class="input-group-text bg-warning" style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;background-color: #eed7cd !important;">Hasta</span>
                         </div>
                         <input type="text" placeholder="DD-MM-YYYY" [(ngModel)]="fechafin" class="form-control" [bsConfig]="{dateInputFormat: 'DD-MM-YYYY',showWeekNumbers: false,useUtc: false }" bsDatepicker>
                         <div class="input-group-append">
-                            <span class="input-group-text bg-warning" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;height: 38px;"><i class="fa fa-calendar"></i></span>
+                            <span class="input-group-text bg-warning" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;height: 38px;background-color: #eed7cd !important;"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
 
@@ -96,7 +97,7 @@
             </div>
             <div class="col-lg-4 col-md-3  col-sm-3">
                 <div class="form-group">
-                    <button class="btn btn-primary btn-ms" (click)="buscar()"><i class="fa fa-search"></i> BUSCAR</button>
+                    <button class="btn btn-primary btn-ms" style="background-color: #293a4c !important;border: 1px solid #fff;" (click)="buscar()"><i class="fa fa-search"></i> BUSCAR</button>
 
                 </div>
             </div>
@@ -195,10 +196,10 @@
                                                     </div>
                                                 </div>
 
-                                                <button class="btn-content" style="margin:4px;width: 120px;display: inline;" (click)="ReservacionCambiarEstado()">SI <i class="fa fa-check"
+                                                <button class="btn-content btninicio" style="margin:4px;width: 120px;display: inline;" (click)="ReservacionCambiarEstado()">SI <i class="fa fa-check"
                             style="font-size: 23px;margin-top: 12px;margin-left: 4px;"></i></button>
 
-                                                <button class="btn-content" style="margin:4px;width: 120px;display: inline;" (click)="modal.dismiss('Cross click')">NO <i class="fa fa-remove"
+                                                <button class="btn-content btninicio" style="margin:4px;width: 120px;display: inline;" (click)="modal.dismiss('Cross click')">NO <i class="fa fa-remove"
                             style="font-size: 23px;margin-top: 12px;margin-left: 4px;"></i></button>
                                             </fieldset>
                                         </div>

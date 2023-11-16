@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./lista-reservas.component.css']
 })
 export class ListaReservasComponent implements OnInit, OnDestroy {
-  images = ['bg-2.jpg', 'bg-2.jpg', 'bg-2.jpg'].map((n) => `assets/img/${n}`);
+  images = ['bg-2.jpeg', 'bg-2.jpeg', 'bg-2.jpeg'].map((n) => `assets/img/${n}`);
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
   dtOptions: DataTables.Settings = {};

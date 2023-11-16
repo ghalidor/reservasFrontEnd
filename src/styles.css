@@ -3289,7 +3289,6 @@ nav a {
     padding: 10px;
     color: #efefef;
     font-size: 11pt;
-    font-weight: 600;
     line-height: 50px;
     text-decoration: none;
 }
@@ -5993,7 +5992,7 @@ body::-webkit-scrollbar-track {
 .dataTables_wrapper .dataTables_filter input,
 .dataTables_wrapper .dataTables_length select {
     color: #fff;
-    background-color: #1d285a;
+    background-color: #2a394c;
 }
 
 .dataTables_length select option {
@@ -6002,7 +6001,7 @@ body::-webkit-scrollbar-track {
 
 .table thead tr th {
     border: 1px solid #fff;
-    background-color: #1d285a;
+    background-color: #2a394c;
     border-color: rgba(90, 146, 255, 0.15) !important;
     color: #fff;
 }
@@ -6060,7 +6059,7 @@ input[type="text"].focus,
 
 .filtrobuscarsticky {
     position: fixed;
-    background: #1d285af0;
+    background: #2a394c;
     width: 98%;
     left: 22px;
     /* margin-right: -205px; */
@@ -6074,7 +6073,7 @@ input[type="text"].focus,
 
 .filtrobuscarsticky_ {
     position: fixed;
-    background: #1d285af0;
+    background: #273547;
     width: 98%;
     left: 10px;
     /* margin-right: -205px; */
@@ -6188,6 +6187,24 @@ input[type="text"].focus,
     border: 1px solid #2a394c;
 }
 
-.bs-datepicker {
+.bs-datepicker{
+    background:transparent;
+}
+
+bs-datepicker-inline-container .bs-datepicker {
     background: transparent;
+}
+
+bs-datepicker-container bs-days-calendar-view {
+    background: #2a394c;
+    border: 1px solid #edd6cc;
+    border-radius: 5px;
+}
+
+.theme-green .bs-datepicker-head {
+    background-color: #2a394c;
+}
+
+a.btnnuevo:hover{
+    color:#eed7cd;
 }
