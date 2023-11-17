@@ -177,16 +177,17 @@ empresaAcceso=new EmpresaAcceso();
         message = "Seleccione Cantidad de Personas";
         break;
       case 'field_calendar':
-        step=true;
+        step= this.Bfecha != "" ? true : false;
+        message = "Seleccione Fecha de la reservación";
         break;
       case 'field_hora':
         step = this.Bhora != "" ? true : false;
         message = "Seleccione Hora de la reservación";
 
-        var lista = this.listaHoras.filter(z=>z.Hora==this.Bhora);
-        if(lista.length>0){
-          this.listaZonas=lista[0].ZonasLibres;
-        }
+        // var lista = this.listaHoras.filter(z=>z.Hora==this.Bhora);
+        // if(lista.length>0){
+        //   this.listaZonas=lista[0].ZonasLibres;
+        // }
 
         break;
      

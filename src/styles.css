@@ -5412,7 +5412,7 @@ address span a {
         font-size: 26pt;
     }
     h3 {
-        font-size: 26pt !important;
+        font-size: 17pt !important;
     }
     p {
         font-size: 10pt;
@@ -5433,10 +5433,10 @@ address span a {
         padding: 5px;
     }
     .btn-content {
-        width: 130px !important;
+        width: 123px !important;
         height: 38px !important;
         line-height: 36px !important;
-        font-size: 8pt !important;
+        font-size: 6pt !important;
     }
     .contable {
         margin-top: 177px !important;
@@ -5449,17 +5449,17 @@ address span a {
     }
     /* /////// */
     .btn-content i {
-        margin-top: 6px !important;
+        margin-top: 4px !important;
     }
     .main-text {
         font-size: 12pt !important;
         font-weight: 300 !important;
     }
     #reservation .people .person {
-        width: 32% !important;
+        width: 24% !important;
     }
     #field_hora .people .person {
-        width: 45% !important;
+        width: 50% !important;
     }
     #field_zona .people .person {
         width: 47% !important;
@@ -5478,7 +5478,22 @@ address span a {
         margin-bottom: 12px !important;
     }
     bs-datepicker-inline {
-        margin-left: -10px !important;
+        margin-left: -18px !important;
+    }
+    #reservation .bs-datepicker button.current span {
+        font-size: 13px !important;
+    }
+    #reservation .bs-datepicker-body table td span {
+        padding: 0px !important;
+        font-size: 16px !important;
+        text-align: center!important;
+        line-height: 32px !important;
+        color: #2a394c !important;
+    }
+    #reservation .bs-datepicker-head button.next span,
+    #reservation .bs-datepicker-head button.previous span {
+        font-size: 34px;
+        margin-top: -5px;
     }
     .gray-popup-block {
         padding: 23px !important;
@@ -5772,6 +5787,12 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
         overflow: hidden;
         white-space: nowrap;
     }
+    #reservation .bs-datepicker button span {
+        font-size: 12px;
+    }
+    #reservation .bs-datepicker-body table td span {
+        font-size: 16px;
+    }
 }
 
 #reservation .bs-datepicker {
@@ -5824,6 +5845,7 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
 .theme-green .bs-datepicker-body table td span[class*=select-]:after,
 .theme-green .bs-datepicker-body table td[class*=select-] span:after {
     background-color: #2a394c;
+    color: #fff !important;
 }
 
 #reservation .bs-datepicker-body table td {
