@@ -373,3 +373,8 @@ div.picsum-img-wrapper img {
 .bs-datepicker-head button.current {
     background: #2a394c94;
 }
+
+
+.plushide{
+    display: none !important;
+}

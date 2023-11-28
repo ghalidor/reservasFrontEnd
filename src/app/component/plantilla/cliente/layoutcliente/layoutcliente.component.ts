@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit,ViewChild, TemplateRef  } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
 import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -12,7 +12,7 @@ import { ReservacionService } from 'src/app/service/reservacion/reservacion.serv
 import { ReservacionNuevo, ListaHorasZonaMesasLibre } from 'src/app/module/reservacion';
 import { Router } from '@angular/router';
 
-import { Empresa,EmpresaAcceso } from 'src/app/module/Empresa';
+import { Empresa, EmpresaAcceso } from 'src/app/module/Empresa';
 import { GlobalEmpresaService } from 'src/app/service/globalEmpresa/global-empresa.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -28,9 +28,9 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   fechaini: Date;
   mostrar: boolean;
   listaHoras: ListaHorasZonaMesasLibre[];
-usuario:string;
-password:string;
-empresaAcceso=new EmpresaAcceso();
+  usuario: string;
+  password: string;
+  empresaAcceso = new EmpresaAcceso();
   onCreateForm = this.formBuilder.group({
     'usuario': ['', Validators.compose([
       Validators.required,
@@ -70,11 +70,11 @@ empresaAcceso=new EmpresaAcceso();
   telefono: string;
   mensaje: string;
   mascotas: boolean;
-  correo:string;
+  correo: string;
   listaZonas: zonas[];
   listaMesas: mesas[];
 
-  hayhoras:boolean;
+  hayhoras: boolean;
 
   empresa = new Empresa;
   reserva = new ReservacionNuevo;
@@ -98,12 +98,12 @@ empresaAcceso=new EmpresaAcceso();
     private router: Router) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-    
+
     this.minDate.setDate(this.minDate.getDate());
   }
 
   ngOnInit(): void {
-    this.hayhoras=true;
+    this.hayhoras = true;
     //this.toastr.warning("Seleccione Empresa/Sede");
     this.RegistroEmpresa();
     //this.ListaZonas();
@@ -124,17 +124,17 @@ empresaAcceso=new EmpresaAcceso();
 
     this.daysDisables = [];
     //  this.registroEmpresaGlobal();
-    this.usuario="";
-    this.password="";
-  
-    
+    this.usuario = "";
+    this.password = "";
+
+
   }
 
   ngAfterViewInit(): void {
     //this.registroEmpresaGlobal();
   }
 
-  open(modal:TemplateRef<any>) {
+  open(modal: TemplateRef<any>) {
     this.RegistroEmpresa();
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: "xl" }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -143,10 +143,10 @@ empresaAcceso=new EmpresaAcceso();
     });
   }
 
-  opensm(modal:TemplateRef<any>) {
+  opensm(modal: TemplateRef<any>) {
     this.RegistroEmpresa();
-    this.usuario="";
-    this.password="";
+    this.usuario = "";
+    this.password = "";
     this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: "sm" }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -177,7 +177,7 @@ empresaAcceso=new EmpresaAcceso();
         message = "Seleccione Cantidad de Personas";
         break;
       case 'field_calendar':
-        step= this.Bfecha != "" ? true : false;
+        step = this.Bfecha != "" ? true : false;
         message = "Seleccione Fecha de la reservación";
         break;
       case 'field_hora':
@@ -190,7 +190,7 @@ empresaAcceso=new EmpresaAcceso();
         // }
 
         break;
-     
+
       case 'field_confirm':
         message = "Complete los campos obligatorios";
         step = this.Bzona != 0 ? true : false;
@@ -301,7 +301,7 @@ empresaAcceso=new EmpresaAcceso();
 
   formulario(posicion: number) {
     console.log(this.mascotas)
-    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" &&  this.mascotas != null && this.correo != null) {
+    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" && this.mascotas != null && this.correo != null) {
       this.mostrar = true;
     }
     else {
@@ -322,7 +322,7 @@ empresaAcceso=new EmpresaAcceso();
       this.reserva.Telefono = this.telefono;
       this.reserva.Mensaje = this.mensaje;
       this.reserva.Mascotas = this.mascotas;
-      this.reserva.Correo=this.correo;
+      this.reserva.Correo = this.correo;
       this.reservacionService.CreateReservacionSinZona(this.reserva).subscribe({
         next: response => {
           if (response.respuesta) {
@@ -356,8 +356,8 @@ empresaAcceso=new EmpresaAcceso();
     this.zonasServices.listaZonas().subscribe({
       next: response => {
         this.listaZonas = response.data;
-        if(this.listaZonas.length>0){
-          this.listaZonas=this.listaZonas.filter(z=>z.EsActivo);
+        if (this.listaZonas.length > 0) {
+          this.listaZonas = this.listaZonas.filter(z => z.EsActivo);
         }
       },
       complete: () => {
@@ -398,7 +398,7 @@ empresaAcceso=new EmpresaAcceso();
         const hijos = fielzona.querySelectorAll("a");
         hijos.forEach(x => x.classList.remove("orange"));
 
-        this.hayhoras = this.listaHoras.filter(x=>x.IsActivo).length>0?true:false;
+        this.hayhoras = this.listaHoras.filter(x => x.IsActivo).length > 0 ? true : false;
       },
       complete: () => {
         this.spinnerService.hide();
@@ -441,18 +441,32 @@ empresaAcceso=new EmpresaAcceso();
         this.empresa.AtencionHoraFin = moment(fecha + " " + this.empresa.AtencionHoraFin, "YYYY-MM-DD HH:mm a").format("hh:mm a");
         this.tituloSemana = this.weekdays[this.empresa.AtencionDiaInicio] + " - " + this.weekdays[this.empresa.AtencionDiaFin];
         const permisoCantidadPersonas = document.getElementById("listaCantidad");
-        if(permisoCantidadPersonas!=null){
-        const that =this;
+        if (permisoCantidadPersonas != null) {
+          const that = this;
           const links = permisoCantidadPersonas.querySelectorAll("a");
-          links.forEach(function(x){
-            if(Number(x.textContent)> that.empresa.Personas){
+          var i = 0;
+          links.forEach(function (x) {
+            i++;
+            if (Number(x.textContent) > that.empresa.Personas) {
               x.parentElement.classList.add("ocultoplus");
               x.classList.add("bloqueo");
             }
+            else {
+              x.parentElement.classList.add("actuales");
+              if (i > 4) {
+                x.parentElement.classList.add("plushide");
+              }
+            }
+
           });
 
+          if(i>4){
+            const caplus = document.getElementById("caplus");
+            caplus.parentElement.classList.remove("plushide");
+          }
+
           //links.forEach(x => Number(x.textContent) > this.empresa.Personas && x.classList.add("bloqueo"));
-  
+
           for (let i = 0; i < 7; i++) {
             if (i >= this.empresa.AtencionDiaInicio && i <= this.empresa.AtencionDiaFin) {
             }
@@ -461,7 +475,7 @@ empresaAcceso=new EmpresaAcceso();
             }
           }
         }
-        
+
       },
       complete: () => {
         this.spinnerService.hide();
@@ -481,11 +495,11 @@ empresaAcceso=new EmpresaAcceso();
       this.empresaService.Login(this.empresaAcceso).subscribe({
         next: response => {
           if (response.respuesta) {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('isLoggedIn', 'true');
             this.toastr.success(response.message);
             this.router.navigate(['reservas']);
-            
+
 
           }
           else {
@@ -507,16 +521,16 @@ empresaAcceso=new EmpresaAcceso();
   }
 
 
-  mostrarPLus(){
+  mostrarPLus() {
     const permisoCantidadPersonas = document.getElementById("listaCantidad");
     const caplus = document.getElementById("caplus");
-    const that =this;
-    const links = permisoCantidadPersonas.querySelectorAll("div.ocultoplus");
-    links.forEach(function(x){
-      x.classList.remove("ocultoplus");
-     
+    const that = this;
+    const links = permisoCantidadPersonas.querySelectorAll("div.plushide");
+    links.forEach(function (x) {
+      x.classList.remove("plushide");
+
     });
-    caplus.style.display="none";
+    caplus.style.display = "none";
   }
 
 }
