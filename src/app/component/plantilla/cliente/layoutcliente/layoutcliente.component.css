@@ -153,7 +153,7 @@ select.list-dt:focus {
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
-    color: #2a394c91;
+    color: #eed7cd;
 }
 
 #progressbar .active {
@@ -164,7 +164,8 @@ select.list-dt:focus {
     list-style-type: none;
     font-size: 12px;
     width: 20%;
-    float: left;
+    /* float: left; */
+    display: inline-block;
     position: relative;
 }
 
@@ -336,6 +337,10 @@ select.list-dt:focus {
     text-decoration: line-through !important;
     color: #eed7cd !important;
     background: #555252 !important;
+}
+
+.ocultoplus {
+    display: none !important;
 }
 
 .bloqueo:hover {

@@ -82,7 +82,7 @@
                                         <div id="msform">
                                             <!-- progressbar -->
                                             <ul id="progressbar">
-                                                <li class="active" id="personas"><strong style="text-shadow: #ffffff 1px 1px 1px;">Personas</strong>
+                                                <li class="active" id="personas"><strong>Personas</strong>
                                                     <div class="text-success">{{HcantP}}</div>
                                                 </li>
                                                 <li id="calendar"><strong>Fecha</strong>
@@ -114,6 +114,7 @@
                                                         <div class="person"><a id="ca10" href="javascript:void(0);" (click)="cantidadPersonas(10)" class="cantPersona person-link">10</a></div>
                                                         <div class="person"><a id="ca11" href="javascript:void(0);" (click)="cantidadPersonas(11)" class="cantPersona person-link">11</a></div>
                                                         <div class="person"><a id="ca12" href="javascript:void(0);" (click)="cantidadPersonas(12)" class="cantPersona person-link">12</a></div>
+                                                        <div class="person"><a id="caplus" href="javascript:void(0);" (click)="mostrarPLus()" class="cantPersona person-link"><i class="fa fa-plus"></i></a></div>
                                                     </div>
 
                                                     <!-- <input id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad" type="text"> -->
@@ -175,7 +176,7 @@
                                                         <input id="telefono" name="telefono" autocomplete="off" (keyup)="formulario(3)" [(ngModel)]="telefono" class="form-control" placeholder="Teléfono (*)" type="text">
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <textarea cols="50" id="mensaje" name="mensaje" autocomplete="off" (keyup)="formulario(4)" [(ngModel)]="mensaje" class="form-control" placeholder="¿Tienes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones) (*)" rows="4"></textarea>
+                                                        <textarea cols="50" id="mensaje" name="mensaje" autocomplete="off" (keyup)="formulario(4)" [(ngModel)]="mensaje" class="form-control" placeholder="¿Tienes alguna necesidad que tengamos que considerar?(Alergias,intolerancia,restricciones)" rows="4"></textarea>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <input id="correo" name="correo" autocomplete="off" (keyup)="formulario(6)" [(ngModel)]="correo" class="form-control" placeholder="Correo (*)" type="text">

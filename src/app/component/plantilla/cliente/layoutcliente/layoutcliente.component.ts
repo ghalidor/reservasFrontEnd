@@ -301,7 +301,7 @@ empresaAcceso=new EmpresaAcceso();
 
   formulario(posicion: number) {
     console.log(this.mascotas)
-    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" && this.mensaje != "" && this.mascotas != null && this.correo != null) {
+    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" &&  this.mascotas != null && this.correo != null) {
       this.mostrar = true;
     }
     else {
@@ -442,8 +442,16 @@ empresaAcceso=new EmpresaAcceso();
         this.tituloSemana = this.weekdays[this.empresa.AtencionDiaInicio] + " - " + this.weekdays[this.empresa.AtencionDiaFin];
         const permisoCantidadPersonas = document.getElementById("listaCantidad");
         if(permisoCantidadPersonas!=null){
+        const that =this;
           const links = permisoCantidadPersonas.querySelectorAll("a");
-          links.forEach(x => Number(x.textContent) > this.empresa.Personas && x.classList.add("bloqueo"));
+          links.forEach(function(x){
+            if(Number(x.textContent)> that.empresa.Personas){
+              x.parentElement.classList.add("ocultoplus");
+              x.classList.add("bloqueo");
+            }
+          });
+
+          //links.forEach(x => Number(x.textContent) > this.empresa.Personas && x.classList.add("bloqueo"));
   
           for (let i = 0; i < 7; i++) {
             if (i >= this.empresa.AtencionDiaInicio && i <= this.empresa.AtencionDiaFin) {
@@ -496,6 +504,19 @@ empresaAcceso=new EmpresaAcceso();
     else {
       this.toastr.warning("Complete los campos Obligatorios(*)");
     }
+  }
+
+
+  mostrarPLus(){
+    const permisoCantidadPersonas = document.getElementById("listaCantidad");
+    const caplus = document.getElementById("caplus");
+    const that =this;
+    const links = permisoCantidadPersonas.querySelectorAll("div.ocultoplus");
+    links.forEach(function(x){
+      x.classList.remove("ocultoplus");
+     
+    });
+    caplus.style.display="none";
   }
 
 }
