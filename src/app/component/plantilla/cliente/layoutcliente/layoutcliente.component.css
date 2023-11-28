@@ -140,7 +140,7 @@ select.list-dt:focus {
 
 .fs-title {
     font-size: 25px;
-    color: #2C3E50;
+    color: #eed7cd;
     margin-bottom: 10px;
     font-weight: bold;
     text-align: left;
@@ -157,7 +157,7 @@ select.list-dt:focus {
 }
 
 #progressbar .active {
-    color: #2a394c;
+    color: #eed7cd;
 }
 
 #progressbar li {
@@ -307,11 +307,13 @@ select.list-dt:focus {
     text-align: center;
     margin: 0 auto;
     background: #29394c6b;
+    font-family: PublicSans-Medium;
 }
 
 #reservation .people .person a:hover {
-    background: #29394c;
-    text-shadow: black 1px 1px 1px;
+    background: #eed7cd;
+    text-shadow: #afa39d 1px 1px 1px !important;
+    color: #2a394c;
 }
 
 #reservation .people .horas a {
@@ -326,13 +328,14 @@ select.list-dt:focus {
 }
 
 .orange {
-    background-color: #2a394c !important;
+    background-color: #eed7cd !important;
+    text-shadow: black 1px 1px 1px !important;
 }
 
 .bloqueo {
     text-decoration: line-through !important;
-    color: #3f3c3c !important;
-    background: #555252;
+    color: #eed7cd !important;
+    background: #555252 !important;
 }
 
 .bloqueo:hover {
@@ -359,7 +362,7 @@ div.picsum-img-wrapper img {
 }
 
 .text-success {
-    color: #2b3a4d !important;
+    color: #eed7cd !important;
 }
 
 .bs-datepicker-head button.current {

@@ -2753,7 +2753,7 @@ blockquote small {
 }
 
 .color {
-    color: #2a394c;
+    color: #eed7cd;
 }
 
 .bg-page {
@@ -2965,7 +2965,7 @@ button:hover {
 
 .devider-doted {
     display: block;
-    border: 1px dashed rgb(42 57 76);
+    border: 1px dashed #eed7cd;
     padding: 25px;
 }
 
@@ -5771,7 +5771,7 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     }
     #reservation .bs-datepicker-body table th {
         font-size: 19px;
-        color: #29394c;
+        color: #eed7cd;
         text-shadow: #000000ed 1px 0px 0px;
     }
     #reservation .people .person {
@@ -5801,7 +5801,7 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
 }
 
 #reservation .bs-datepicker-body table td {
-    color: #2a394c;
+    color: #eed7cd;
 }
 
 #reservation .bs-datepicker button span {
@@ -5827,11 +5827,13 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     border-radius: 50%;
     padding: 4px;
     font-size: 16px;
+    font-family: PublicSans-Medium;
 }
 
 #reservation .bs-datepicker-body table td span:hover {
-    background-color: #2a394c;
-    color: #fff;
+    background-color: #eed7cd;
+    color: #2a394c;
+    font-weight: bold;
 }
 
 #reservation .bs-datepicker-body table.days span {
@@ -5844,8 +5846,9 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
 .theme-green .bs-datepicker-body table td.selected span,
 .theme-green .bs-datepicker-body table td span[class*=select-]:after,
 .theme-green .bs-datepicker-body table td[class*=select-] span:after {
-    background-color: #2a394c;
-    color: #fff !important;
+    background-color: #eed7cd;
+    color: #2a394c !important;
+    font-weight: bold;
 }
 
 #reservation .bs-datepicker-body table td {
@@ -6199,8 +6202,9 @@ input[type="text"].focus,
 }
 
 .modal-content {
-    background-color: #eed7cd;
-    border: 1px solid #2a394c;
+    background-color: #2a394c;
+    border: 1px solid #344c6b;
+    color: #eed7cd;
 }
 
 .bs-datepicker {
