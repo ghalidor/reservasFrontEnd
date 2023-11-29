@@ -7,7 +7,7 @@ export class Empresa {
     AtencionHoraFin: string;
     Telefono: string;
     Personas: number;
-    
+    correo: string;
 }
 
 export class EmpresaAcceso {

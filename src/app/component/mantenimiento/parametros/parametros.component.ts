@@ -33,6 +33,9 @@ export class ParametrosComponent implements OnInit {
     'Telefono': ['', Validators.compose([
       Validators.required,
     ]),],
+    'correo': ['', Validators.compose([
+      Validators.required,
+    ]),],
     'Personas': ['', Validators.compose([
       Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)
     ]),],

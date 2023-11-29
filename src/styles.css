@@ -4780,7 +4780,7 @@ screen and (max-height:300px) {
     font-weight: 300;
     letter-spacing: 0px;
     color: #eed7cd;
-    background: rgba(48, 52, 64, 0.8);
+    background: rgb(108 116 141 / 80%);
     padding: 10px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
