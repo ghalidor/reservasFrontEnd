@@ -103,6 +103,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.listaZonas=[];
     this.hayhoras = true;
     //this.toastr.warning("Seleccione Empresa/Sede");
     this.RegistroEmpresa();
@@ -394,9 +395,9 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
         this.Bzona = 0;
         this.Hhora = null;
         this.Bhora = "";
-        const fielzona = document.getElementById("field_zona");
-        const hijos = fielzona.querySelectorAll("a");
-        hijos.forEach(x => x.classList.remove("orange"));
+        // const fielzona = document.getElementById("field_zona");
+        // const hijos = fielzona.querySelectorAll("a");
+        // hijos.forEach(x => x.classList.remove("orange"));
 
         this.hayhoras = this.listaHoras.filter(x => x.IsActivo).length > 0 ? true : false;
       },
