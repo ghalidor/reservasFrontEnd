@@ -147,7 +147,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
   open(modal: TemplateRef<any>) {
     this.RegistroEmpresa();
-    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: "xl" }).result.then((result) => {
+    this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: "xl",backdrop: 'static' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -312,7 +312,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
 
   formulario(posicion: number) {
     console.log(this.mascotas)
-    if (this.nombres != "" && this.nrodocumento != "" && this.telefono != "" && this.mascotas != null && this.correo != null) {
+    if (this.nombres != "" && this.telefono != "" && this.mascotas != null && this.correo != null) {
       this.mostrar = true;
     }
     else {
