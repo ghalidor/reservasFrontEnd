@@ -39,6 +39,9 @@ export class ParametrosComponent implements OnInit {
     'Personas': ['', Validators.compose([
       Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)
     ]),],
+    'direccion': ['', Validators.compose([
+      Validators.required,
+    ]),],
   });
   constructor(private spinnerService: NgxSpinnerService, private toastr: ToastrService,
     public activeModal: NgbActiveModal,private formBuilder: FormBuilder,private empresaService:EmpresaService) { }

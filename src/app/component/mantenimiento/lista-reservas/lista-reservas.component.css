@@ -77,3 +77,7 @@ table thead th {
 .bodycolor {
     color: #eed7cd !important;
 }
+
+.dataTables_wrapper .dataTables_length select {
+    color: #fff !important;
+}

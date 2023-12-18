@@ -2863,14 +2863,15 @@ button:hover {
     display: inline-block;
     width: 200px;
     height: 50px;
-    font-size: 10pt;
+    font-size: 9pt;
     letter-spacing: 2pt;
     text-transform: uppercase;
     font-style: normal;
     text-align: center;
     line-height: 49px;
     color: #ffffff;
-    border: 1px solid #eed7cd;
+    font-weight: bolder !important;
+    border: none !important;
     background: rgb(42 57 76);
     border-radius: 100px;
     outline: none;
@@ -2932,12 +2933,8 @@ button:hover {
     border: none;
     background: #eed7cd!important;
     border: 1px solid rgb(41 58 76);
-    transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
     color: #29394c;
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 .btn-form:hover {
@@ -2967,6 +2964,14 @@ button:hover {
     display: block;
     border: 1px dashed #eed7cd;
     padding: 25px;
+}
+
+.imagenborde {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    padding: 28px;
 }
 
 .devider-doted-menu {
@@ -4795,13 +4800,13 @@ screen and (max-height:300px) {
 #reservation textarea {
     text-align: left;
     outline: none;
+    background: rgb(108 116 141 / 80%);
     margin: 5px 0px 5px 0px;
     border: 0px;
     font-size: 9pt;
     font-weight: 300;
     letter-spacing: 0px;
     color: #efefef;
-    background: rgba(48, 52, 64, 0.8);
     padding: 10px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -5673,11 +5678,16 @@ textarea.ng-dirty.ng-invalid {
 input.ng-invalid,
 textarea.ng-invalid,
 select.ng-invalid {
-    border: 1px solid #dc3747 !important;
+    /* border: 1px solid #dc3747 !important; */
+    border: none !important;
 }
 
 ng-select.ng-invalid .ng-select-container {
     border: 1px solid #dc3747 !important;
+}
+
+.selectng {
+    margin: 5px 0px 5px 0px !important;
 }
 
 #reservation ng-select {
@@ -5685,10 +5695,11 @@ ng-select.ng-invalid .ng-select-container {
     border: 0px !important;
     margin-top: 2px;
     border-bottom: none;
+    margin: 0px 0px 0px 0px;
 }
 
 #reservation .ng-select.ng-select-opened>.ng-select-container {
-    background: #56555c !important;
+    background: #5e6880 !important;
     border: 0px !important;
     padding-top: 12px;
 }
@@ -5707,7 +5718,7 @@ ng-select.ng-invalid .ng-select-container {
 }
 
 #reservation .ng-select .ng-select-container {
-    background-color: #56555c;
+    background-color: #5e6880;
     margin-top: 0px;
     color: #eed7cd;
     min-height: 50px;
@@ -5828,6 +5839,7 @@ ng-select.ng-invalid.ng-touched .ng-select-container {
     padding: 4px;
     font-size: 16px;
     font-family: PublicSans-Medium;
+    background-color: #7b7471;
 }
 
 #reservation .bs-datepicker-body table td span:hover {
@@ -6011,7 +6023,7 @@ body::-webkit-scrollbar-track {
 
 .dataTables_wrapper .dataTables_filter input,
 .dataTables_wrapper .dataTables_length select {
-    color: #2a394c;
+    color: #edf5ff;
     background-color: #2a394c;
 }
 
@@ -6231,4 +6243,10 @@ a.btnnuevo:hover {
 
 bs-datepicker-inline-container .bs-datepicker-head button.current {
     background: #2a394c94;
+}
+
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-indicators {
+    display: none !important;
 }

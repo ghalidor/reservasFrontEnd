@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef,HostListener  } from '@angular/core';
 import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -84,7 +84,7 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
   tituloSemana: string;
 
   daysDisables: number[];
-  images = ['bg-2.jpeg', 'bg-2.jpeg', 'bg-2.jpeg'].map((n) => `assets/img/${n}`);
+  images = ['canete5.jpg', 'canete5.jpg', 'canete5.jpg','border.png'].map((n) => `assets/img/${n}`);
   constructor(
     private modalService: NgbModal,
     private reservacionService: ReservacionService,
@@ -100,6 +100,16 @@ export class LayoutclienteComponent implements OnInit, AfterViewInit {
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
 
     this.minDate.setDate(this.minDate.getDate());
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    // Aquí puedes verificar las teclas que se presionaron
+    if (event.ctrlKey && event.key === 'q') {
+      console.log('Se presionó la combinación de teclas Ctrl + A');
+      this.opensm(this.templateModallogin);
+      // Puedes realizar acciones específicas aquí
+    }
   }
 
   ngOnInit(): void {

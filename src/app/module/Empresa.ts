@@ -8,6 +8,7 @@ export class Empresa {
     Telefono: string;
     Personas: number;
     correo: string;
+    direccion: string;
 }
 
 export class EmpresaAcceso {

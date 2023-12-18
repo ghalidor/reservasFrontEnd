@@ -31,7 +31,7 @@
                                                     <div class="form-group  tre">
                                                         <label>Dia Inicio</label>
 
-                                                        <ng-select class="" [(ngModel)]="empresa.AtencionDiaInicio" formControlName="AtencionDiaInicio" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
+                                                        <ng-select class="selectng" [(ngModel)]="empresa.AtencionDiaInicio" formControlName="AtencionDiaInicio" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
                                                             <ng-option [value]="0">DOMIGO</ng-option>
                                                             <ng-option [value]="1">LUNES</ng-option>
                                                             <ng-option [value]="2">MARTES</ng-option>
@@ -45,7 +45,7 @@
                                                 <div class="col-lg-6 col-md-6 mb-1">
                                                     <div class="form-group tre">
                                                         <label>Dia Fin</label>
-                                                        <ng-select class="" [(ngModel)]="empresa.AtencionDiaFin" formControlName="AtencionDiaFin" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
+                                                        <ng-select class="selectng" [(ngModel)]="empresa.AtencionDiaFin" formControlName="AtencionDiaFin" style="padding-left: 0px;padding-right: 0px;" placeholder="Seleccione" [clearable]="true" [searchable]="true" [multiple]="false">
                                                             <ng-option [value]="0">DOMIGO</ng-option>
                                                             <ng-option [value]="1">LUNES</ng-option>
                                                             <ng-option [value]="2">MARTES</ng-option>
@@ -97,7 +97,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12">
+                                                    <div class="form-group ">
+                                                        <label>Direccion</label>
+                                                        <input type="text" [(ngModel)]="empresa.direccion" formControlName="direccion" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
 
                                     </div>
